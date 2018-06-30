@@ -1,0 +1,35 @@
+// Font Awesome
+@import url('http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css');
+
+// Bootswatch Lux
+@import '../css/bootswatch-lux.min.css';
+
+// For Admin Panel
+@import '../css/sb-admin.min.css';
+
+body.admin-body {
+	padding-top: 56px;
+}
+
+.nav-item {
+    margin-right: 0;
+}
+
+#sidenavToggler {
+	padding: 1.6em 1em !important;
+}
+
+// End for Admin Panel
+
+body {
+	padding-top: 120px;
+}
+
+// Vertical alignment for label and input
+.col-form-label {
+    padding-top: calc(0.75rem + 1px);
+}
+
+.active-color {
+	color: #fff !important;
+}
