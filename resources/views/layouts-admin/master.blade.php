@@ -23,10 +23,10 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseProducts">
             <li>
-              <a href="{{ route('product.create') }}">Create product</a>
+              <a href="{{ route('products.create') }}">Create product</a>
             </li>
             <li>
-              <a href="{{ route('product.index') }}">All products</a>
+              <a href="{{ route('products.index') }}">All products</a>
             </li>
           </ul>
         </li>
@@ -38,10 +38,10 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseCategories">
             <li>
-              <a href="#">Create category</a>
+              <a href="{{ route('categories.create') }}">Create category</a>
             </li>
             <li>
-              <a href="#">All categories</a>
+              <a href="{{ route('categories.index') }}">All categories</a>
             </li>
           </ul>
         </li>

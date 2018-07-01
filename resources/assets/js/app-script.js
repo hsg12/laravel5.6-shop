@@ -1,28 +1,15 @@
 $(function(){
-	var pathname = window.location.pathname;
-	var href = window.location.href;
 
-	/* To leave the open admin menu when it active */
+	let href = window.location.href;
 
-	if ( href.match(new RegExp('/admin/product')) ) {       
-		$('#collapse-product-li a').removeClass('collapsed');
-		$('#collapse-product-li > ul').addClass('show');
-	}
+	/* To leave open admin menu when it active and for highlighting */
 
+	let neededLink = $('#exampleAccordion').find('a[href="' + href + '"]');
+	let neededLinkParentsUl = neededLink.parents('ul');
 
-	/* For highlighting admin menu */
-
-	var linksLength = $('#exampleAccordion > li > a').length;
-
-	for (var i = 0; i < linksLength ; i++) {
-		var attrHref = $('#exampleAccordion li ul li:eq(' + i + ') a').attr('href');
-
-		if ( href.match(new RegExp('^' + attrHref)) ) {       
-			$('#exampleAccordion li ul li:eq(' + i + ') a').addClass('active-color');   
-			break;
-		}
-	}
-
+	neededLink.addClass('active-color');
+	neededLinkParentsUl.addClass('show');
+	neededLinkParentsUl.siblings('a').removeClass('collapsed');
 
 	/*  */
 

@@ -2,6 +2,6 @@
 
 @section('content')
 
-<h4 class="mt-3">Welcome to Admin Panel</h4>
+<h4 class="mt-3">Create Category</h4>
 
 @endsection

@@ -8,4 +8,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdminController@index')->name('admin');
-Route::resource('/admin/product', 'Admin\ProductController');
+Route::resource('/admin/products', 'Admin\ProductController');
+Route::resource('/admin/categories', 'Admin\CategoryController');
