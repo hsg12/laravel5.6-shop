@@ -39,11 +39,11 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         if ($request->hasFile('image')) {
-            $fileName = basename($request->file('image')->store('public/products')); // Сохраняем в файловой системе
+            $fileName = basename($request->file('image')->store('public/products')); // save in the file system
         }
 
         $requestData = $request->all();
-        $requestData['image'] = $fileName;
+        $requestData['image'] = $fileName; // for save in the database
 
         Product::create($requestData);
         return redirect('/admin/products');
