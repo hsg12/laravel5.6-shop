@@ -3,9 +3,11 @@ import $ from 'jquery';
 require('./bootstrap');
 require('./app-script');
 
+
 // For Admin Panel
 require('./bootstrap.bundle.min');
 require('./sb-admin');
+require('./jquery-filestyle.min');
 
 /*
 window.Vue = require('vue');

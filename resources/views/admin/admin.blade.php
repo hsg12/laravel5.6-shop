@@ -1,4 +1,5 @@
 @extends('layouts-admin.master')
+@section('title', "| Admin area")
 
 @section('content')
 

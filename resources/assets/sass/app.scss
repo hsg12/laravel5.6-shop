@@ -6,6 +6,7 @@
 
 // For Admin Panel
 @import '../css/sb-admin.min.css';
+@import '../css/jquery-filestyle.min';
 
 body.admin-body {
 	padding-top: 56px;
@@ -32,4 +33,8 @@ body {
 
 .active-color {
 	color: #fff !important;
+}
+
+textarea {
+	min-height: 250px;
 }

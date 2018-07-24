@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
+use App\Product;
 
 class ProductController extends Controller
 {
@@ -14,7 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product.index');
+        $products = Product::all();
+        return view('admin.product.index', compact('products'));
     }
 
     /**
@@ -33,9 +36,17 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        if ($request->hasFile('image')) {
+            $fileName = basename($request->file('image')->store('public/products')); // Сохраняем в файловой системе
+        }
+
+        $requestData = $request->all();
+        $requestData['image'] = $fileName;
+
+        Product::create($requestData);
+        return redirect('/admin/products');
     }
 
     /**
