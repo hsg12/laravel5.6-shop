@@ -31,6 +31,4 @@ class ProductRequest extends FormRequest
             'image'  => 'required|image|max:2000',
         ];
     }
-
-    
 }

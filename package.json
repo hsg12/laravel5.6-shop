@@ -20,6 +20,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "bootswatch": "^4.1.1"
+        "bootswatch": "^4.1.1",
+        "toastr": "^2.1.4"
     }
 }

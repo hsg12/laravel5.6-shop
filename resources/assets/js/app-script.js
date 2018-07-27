@@ -4,13 +4,25 @@ $(function(){
 
 	/* To leave open admin menu when it active and for highlighting */
 
-	let neededLink = $('#exampleAccordion').find('a[href="' + href + '"]');
-	let neededLinkParentsUl = neededLink.parents('ul');
+	let linksLength = $('#exampleAccordion > li > a').length;
 
-	neededLink.addClass('active-color');
-	neededLinkParentsUl.addClass('show');
-	neededLinkParentsUl.siblings('a').removeClass('collapsed');
+	for (var i = 0; i <= linksLength ; i++) {
+		const accordionLink = $('#exampleAccordion li ul li:eq(' + i + ') a');
+		let attrHref = accordionLink.attr('href');
+
+		if ( href.match(new RegExp('^' + attrHref)) ) {  
+			accordionLink.addClass('active-color');  
+			accordionLink.parents('ul').addClass('show');  
+			accordionLink.parents('ul').siblings('a').removeClass('collapsed');
+			break;
+		}
+	}
 
 	/*  */
+
+	$('.confirm-plugin-delete').jConfirmAction({
+		question: 'Are you sure?',
+		noText: 'Cancel'
+	});
 
 });

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Product;
+use Storage;
 
 class ProductController extends Controller
 {
@@ -17,7 +18,8 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('admin.product.index', compact('products'));
+        $cnt = 0;
+        return view('admin.product.index', compact('products', 'cnt'));
     }
 
     /**
@@ -38,14 +40,16 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
+        $requestData = $request->all();
+
         if ($request->hasFile('image')) {
             $fileName = basename($request->file('image')->store('public/products')); // save in the file system
+            $requestData['image'] = $fileName; // for save in the database
         }
 
-        $requestData = $request->all();
-        $requestData['image'] = $fileName; // for save in the database
-
         Product::create($requestData);
+
+        session()->flash('success', 'Product successfully created!');
         return redirect('/admin/products');
     }
 
@@ -66,9 +70,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        return view('admin.product.edit', compact('product'));
     }
 
     /**
@@ -78,9 +82,28 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Product $product)
     {
-        //
+        $this->validate(request(), [
+            'name' => 'required|regex:/^[^<>]+$/u|max:190|unique:products,name,' . $product->id,
+            'price'  => 'numeric|min:0|regex:/^\d*(\.\d{1,2})?$/',
+            'description'  => 'required|regex:/^[^<>]+$/u',
+            'image'  => 'image|max:2000',
+        ]);
+
+        $requestData = request()->all();
+
+        if (request()->hasFile('image')) {
+            Storage::delete('public/products/' . $product->image);
+            
+            $filePath  = basename(request('image')->store('public/products'));
+            $requestData['image'] = $filePath; // for save in the database
+        }
+
+        $product->update($requestData);
+
+        session()->flash('success', 'Product successfully updated!');
+        return redirect('/admin/products');
     }
 
     /**
@@ -89,8 +112,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        
+        Product::deleteImage($product->image);
+        
+        session()->flash('success', 'Product successfully deleted!');
+        return redirect('admin/products');
     }
 }
