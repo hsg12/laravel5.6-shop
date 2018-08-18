@@ -4,6 +4,7 @@ window.toastr = require('toastr') // Require 'toastr' and make it available glob
 
 require('./bootstrap');
 require('./app-script');
+require('./scriptbreaker-multiple-accordion-1');
 
 // For Admin Panel
 require('./bootstrap.bundle.min');

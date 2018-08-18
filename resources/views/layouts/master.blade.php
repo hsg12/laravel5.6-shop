@@ -3,7 +3,17 @@
 	@include('layouts.navbar')
 
 	<div class="container">
-		@yield('content')
+		<div class="row">
+			<div class="col-lg-3">
+				@include('layouts.sidebar')
+			</div>
+			<div class="col-lg-9">
+				@yield('content')
+			</div>
+		</div>
+		
+
+		
 	</div>
 
 @include('layouts.footer')

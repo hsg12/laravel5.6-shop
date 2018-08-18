@@ -18,11 +18,28 @@ $(function(){
 		}
 	}
 
-	/*  */
+	/* For delete button */
 
 	$('.confirm-plugin-delete').jConfirmAction({
 		question: 'Are you sure?',
 		noText: 'Cancel'
 	});
+
+	/* For categories accordion */
+
+	$(".topnav").accordion({
+		accordion:true,
+		speed: 500,
+		closedSign: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
+        openedSign: '<i class="fa fa-caret-down" aria-hidden="true"></i>'
+	});
+
+	/* In order do not work link which has children */
+
+    $('ul.topnav li a').on('click', function(){
+        if ($(this).parent('li').has('ul').length != 0) {
+            return false;
+        }
+    });
 
 });

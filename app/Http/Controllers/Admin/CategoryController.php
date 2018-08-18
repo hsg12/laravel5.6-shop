@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Category;
 
 class CategoryController extends Controller
 {
@@ -14,7 +15,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index');
+        $cnt = 0;
+        $categories = Category::orderBy('category_order', 'asc')->get();
+        
+        return view('admin.category.index', compact('categories', 'cnt'));
     }
 
     /**
@@ -24,7 +28,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        $categories = Category::get();
+        return view('admin.category.create', compact('categories'));
     }
 
     /**
@@ -55,9 +60,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        $categories = Category::get();
+        return view('admin.category.edit', compact('categories', 'category'));
     }
 
     /**
@@ -78,8 +84,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        dd($category);
     }
 }

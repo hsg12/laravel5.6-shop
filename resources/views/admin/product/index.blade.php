@@ -3,9 +3,9 @@
 
 @section('content')
 
-<h4 class="mt-3 mb-5">All Products</h4>
+<h4 class="mt-3 mb-4">All Products</h4>
 
-@if(!$products->count() > 0)
+@if($products->count() <= 0)
 	<h5>Products list is empty</h5>
 @else
 	<div class="table-responsive">
