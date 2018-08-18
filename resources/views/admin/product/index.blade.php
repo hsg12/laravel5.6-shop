@@ -34,9 +34,9 @@
 
 					<form action="{{ route('products.destroy', ['id' => $product->id]) }}" method="post" class="app-delete-form confirm-plugin-delete">
 
-                        {{ csrf_field() }}
+                        @csrf
+                        @method('delete')
 
-                        <input type="hidden" name="_method" value="delete">
                         <input type="submit" name="delete" value="Delete">
                     </form>
 				</td>

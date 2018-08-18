@@ -55,8 +55,9 @@
                                 <button type="submit" class="btn btn-outline-secondary">
                                     {{ __('Login') }}
                                 </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                            </div>
+                            <div class="col-md-8 offset-md-4 mt-3">
+                                <a href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             </div>

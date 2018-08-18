@@ -9,7 +9,7 @@
 	<h5>Categories list is empty</h5>
 @else
 	<div class="table-responsive">
-		<table class="table table-striped table-hover">
+		<table class="table table-striped table-hover mb-5">
 			<tr>
 				<th>#</th>
                 <th>Name</th>
@@ -28,11 +28,11 @@
                 <td>
                     <a href="{{ route('categories.edit', ['name' => $category->name]) }}">Edit</a>
                     &nbsp;&nbsp;|&nbsp;&nbsp;
-                    <form action="{{ url('/') }}/admin/categories/{{ $category->name }}" method="post" class="app-delete-form confirm-plugin-delete">
+                    <form action="{{ route('categories.destroy', ['name' => $category->name]) }}" method="post" class="app-delete-form confirm-plugin-delete">
 
                         @csrf
+                        @method('delete')
 
-                        <input type="hidden" name="_method" value="delete">
                         <input type="submit" name="delete" value="Delete">
                     </form>
                 </td>
@@ -40,6 +40,9 @@
             @endforeach
 		</table>
 	</div>
+	<br>
+	<br>
+	<br>
 @endif
 
 @endsection

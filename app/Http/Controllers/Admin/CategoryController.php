@@ -38,9 +38,24 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $this->validate(request(), [
+            'parent_id'      => 'integer',
+            'name'           => 'required|regex:/^[^<>]+$/u|unique:categories,name|max:255',
+            'is_visible'     => 'in:null,on',
+            'category_order' => 'required|integer|max:255',
+        ]);
+        
+        Category::create([
+            'parent_id'      => request('parent_id') ?: null,
+            'name'           => request('name'),
+            'is_visible'     => request('is_visible'),
+            'category_order' => request('category_order'),
+        ]);
+        
+        session()->flash('success', 'The category successfully created!');
+        return redirect('/admin/categories');
     }
 
     /**
@@ -73,9 +88,24 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Category $category)
     {
-        //
+        $this->validate(request(), [
+            'parent_id'      => 'integer',
+            'name'           => 'required|regex:/^[^<>]+$/u|max:255|unique:categories,name,' . $category->id,
+            'is_visible'     => 'in:null,on',
+            'category_order' => 'required|integer|max:255',
+        ]);
+        
+        $category->update([
+            'parent_id'      => request('parent_id') ?: null,
+            'name'           => request('name'),
+            'is_visible'     => request('is_visible'),
+            'category_order' => request('category_order'),
+        ]);
+        
+        session()->flash('success', 'The category successfully updated!');
+        return redirect('/admin/categories');
     }
 
     /**
@@ -86,6 +116,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        dd($category);
+        $category->deleteProductsImages();
+        $category->delete();
+        
+        session()->flash('success', 'The category successfully deleted!');
+        return back();
     }
 }
