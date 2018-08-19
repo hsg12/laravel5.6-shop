@@ -56,7 +56,7 @@
                 <label class="custom-checkbox">Is Visible:
                     <input type="checkbox" 
                            name="is_visible"
-                           class="category-checkbox{{ $errors->has('is_visible') ? ' is-invalid' : '' }}"
+                           class="form-checkbox{{ $errors->has('is_visible') ? ' is-invalid' : '' }}"
                            value="{{ $category->is_visible ?: 'on' }}"
                            {{ $category->is_visible ? 'checked' : '' }}
                     >

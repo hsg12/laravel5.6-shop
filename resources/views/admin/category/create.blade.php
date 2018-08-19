@@ -45,7 +45,7 @@
         <div class="col-sm-6">
 			<div class="form-group my-4">
                 <label class="custom-checkbox">Is Visible:
-                    <input type="checkbox" class="category-checkbox{{ $errors->has('is_visible') ? ' is-invalid' : '' }}" name="is_visible" value="on">
+                    <input type="checkbox" class="form-checkbox{{ $errors->has('is_visible') ? ' is-invalid' : '' }}" name="is_visible" value="on">
                     <span class="checkmark"></span>
                 </label>
                 @if ($errors->has('is_visible'))

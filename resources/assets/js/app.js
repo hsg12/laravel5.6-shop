@@ -2,6 +2,8 @@ import $ from 'jquery'
 
 window.toastr = require('toastr') // Require 'toastr' and make it available globally:
 
+
+
 require('./bootstrap');
 require('./app-script');
 require('./scriptbreaker-multiple-accordion-1');

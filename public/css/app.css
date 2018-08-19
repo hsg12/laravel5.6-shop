@@ -539,11 +539,39 @@ a:hover {
   color: #0056b3;
 }
 
-.category-checkbox {
+.form-checkbox {
   position: relative;
   top: 2px;
   left: 5px;
 }
+
+/* Styles for bootstrap 4 tooltips */
+
+.tooltip-inner {
+  background-color: #343A40;
+}
+
+.tooltip.bs-tooltip-auto[x-placement^=top] .arrow::before,
+.tooltip.bs-tooltip-top .arrow::before {
+  border-top-color: #343A40;
+}
+
+.tooltip.bs-tooltip-auto[x-placement^=right] .arrow::before,
+.tooltip.bs-tooltip-right .arrow::before {
+  border-right-color: #343A40;
+}
+
+.tooltip.bs-tooltip-auto[x-placement^=bottom] .arrow::before,
+.tooltip.bs-tooltip-bottom .arrow::before {
+  border-bottom-color: #343A40;
+}
+
+.tooltip.bs-tooltip-auto[x-placement^=left] .arrow::before,
+.tooltip.bs-tooltip-left .arrow::before {
+  border-left-color: #343A40;
+}
+
+/* End block  */
 
 @media only screen and (max-width: 992px) {
   ul.topnav {

@@ -12,23 +12,35 @@
 		<table class="table table-striped table-hover">
 			<tr>
 				<th>#</th>
-				<th>Product name</th>
+				<th>Name</th>
+				<th>Category</th>
 				<th>Description</th>
 				<th>Price</th>
 				<th>Image</th>
+				<th>Is visible</th>
 				<th>Created at</th>
 				<th>Actions</th>
 			</tr>
 			@foreach($products as $product)
 			<tr>
 				<td>{{ ++$cnt }}</td>
-				<td>{{ $product->name }}</td>
-				<td>{{ $product->description }}</td>
+				<td>
+					<span title="{{ $product->name }}" data-toggle='tooltip' data-placement='right'>
+						{{ getTitle($product->name, 10) }}
+					</span>
+				</td>
+				<td>{{ $product->category->name }}</td>
+				<td>
+					<span title="{{ $product->description }}" data-toggle='tooltip' data-placement='right'>
+						{{ getTitle($product->description, 10) }}
+					</span>
+				</td>
 				<td>${{ $product->price }}</td>
 				<td>
 					<img src="{{ asset('storage/products/' . $product->image) }}" alt="img" height="40px">
 				</td>
-				<td>{{ $product->created_at }}</td>
+				<td>{{ $product->is_visible ? 'Yes' : 'No' }}</td> 
+				<td>{{ $product->created_at->toFormattedDateString() }}</td>
 				<td>
 					<a href="{{ route('products.edit', ['id' => $product->id]) }}">Edit</a> |
 

@@ -13692,6 +13692,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 window.toastr = __webpack_require__(12); // Require 'toastr' and make it available globally:
 
+
 __webpack_require__(14);
 __webpack_require__(38);
 __webpack_require__(39);
@@ -36458,6 +36459,10 @@ $(function () {
 			return false;
 		}
 	});
+
+	/* For Bootstrap 4 Tooltip */
+
+	$('[data-toggle="tooltip"]').tooltip();
 });
 
 /***/ }),

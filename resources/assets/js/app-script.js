@@ -42,4 +42,10 @@ $(function(){
         }
     });
 
+    /* For Bootstrap 4 Tooltip */
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    
+
 });

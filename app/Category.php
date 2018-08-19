@@ -63,8 +63,8 @@ class Category extends Model
             $products = Product::where('category_id', $value->id)->get();
              
             if ($products && count($products) > 0) {
-                array_walk_recursive($products, function($post){
-                    Product::deleteImage($post->img);
+                array_walk_recursive($products, function($product){
+                    Product::deleteImage($product->image);
                 });
             }
         });
@@ -75,7 +75,7 @@ class Category extends Model
         $products = $this->products()->get();
         
         foreach ($products as $product) {          
-            Post::deleteImage($product->img);
+            Product::deleteImage($product->image);
         }
     }
     

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Product;
+use App\Category;
 use Storage;
 
 class ProductController extends Controller
@@ -29,7 +30,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.create');
+        // In this 2 lines we are looking categories which do not have parents
+        $val = Category::whereNotNull('parent_id')->pluck('parent_id');
+        $categories = Category::select()->whereNotIn('id', $val)->get();
+
+        return view('admin.product.create', compact('categories'));
     }
 
     /**
@@ -72,7 +77,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.product.edit', compact('product'));
+        $val = Category::whereNotNull('parent_id')->pluck('parent_id');
+        $categories = Category::select()->whereNotIn('id', $val)->get();
+
+        return view('admin.product.edit', compact('product', 'categories'));
     }
 
     /**
@@ -85,10 +93,12 @@ class ProductController extends Controller
     public function update(Product $product)
     {
         $this->validate(request(), [
-            'name' => 'required|regex:/^[^<>]+$/u|max:190|unique:products,name,' . $product->id,
-            'price'  => 'numeric|min:0|regex:/^\d*(\.\d{1,2})?$/',
-            'description'  => 'required|regex:/^[^<>]+$/u',
-            'image'  => 'image|max:2000',
+            'category_id' => 'required|integer',
+            'name'        => 'required|regex:/^[^<>]+$/u|max:190|unique:products,name,' . $product->id,
+            'price'       => 'numeric|min:0|regex:/^\d*(\.\d{1,2})?$/',
+            'description' => 'required|regex:/^[^<>]+$/u',
+            'image'       => 'image|max:2000',
+            'is_visible'  => 'in:null,on',
         ]);
 
         $requestData = request()->all();
@@ -97,10 +107,16 @@ class ProductController extends Controller
             Storage::delete('public/products/' . $product->image);
             
             $filePath  = basename(request('image')->store('public/products'));
-            $requestData['image'] = $filePath; // for save in the database
+            $product->image = $filePath;
         }
 
-        $product->update($requestData);
+        $product->name        = request('name');
+        $product->description = request('description');
+        $product->price       = request('price');
+        $product->category_id = request('category_id');
+        $product->is_visible  = request('is_visible');
+
+        $product->update();
 
         session()->flash('success', 'Product successfully updated!');
         return redirect('/admin/products');

@@ -25,6 +25,24 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
+                <label for="content">Category:</label>
+                <select class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}" id="category_id" name="category_id" value="{{ old('category_id') }}" required>
+                    @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                @if ($errors->has('category_id'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('category_id') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
                 <label for="price">Price:</label>
                 <input class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" id="price" type="text" name="price" value="{{ old('price') }}">
                 @if ($errors->has('price'))
@@ -58,10 +76,25 @@
                        data-text="Upload image" 
                        name="image" 
                 >
-
                 @if ($errors->has('image'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('image') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="custom-checkbox">Is Visible:
+                    <input type="checkbox" name="is_visible" value="on" class="form-checkbox{{ $errors->has('is_visible') ? ' is-invalid' : '' }}">
+                    <span class="checkmark"></span>
+                </label>
+                @if ($errors->has('is_visible'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('is_visible') }}</strong>
                     </span>
                 @endif
             </div>

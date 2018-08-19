@@ -42,9 +42,9 @@ class CategoryController extends Controller
     {
         $this->validate(request(), [
             'parent_id'      => 'integer',
-            'name'           => 'required|regex:/^[^<>]+$/u|unique:categories,name|max:255',
+            'name'           => 'required|regex:/^[^<>]+$/u|unique:categories,name|max:190',
             'is_visible'     => 'in:null,on',
-            'category_order' => 'required|integer|max:255',
+            'category_order' => 'required|integer|max:190',
         ]);
         
         Category::create([
@@ -92,9 +92,9 @@ class CategoryController extends Controller
     {
         $this->validate(request(), [
             'parent_id'      => 'integer',
-            'name'           => 'required|regex:/^[^<>]+$/u|max:255|unique:categories,name,' . $category->id,
+            'name'           => 'required|regex:/^[^<>]+$/u|max:190|unique:categories,name,' . $category->id,
             'is_visible'     => 'in:null,on',
-            'category_order' => 'required|integer|max:255',
+            'category_order' => 'required|integer|max:190',
         ]);
         
         $category->update([

@@ -25,10 +25,13 @@ class ProductRequest extends FormRequest
     {
         return [
             // Here we write the validation for form fields
-            'name' => 'required|regex:/^[^<>]+$/u|unique:products,name|max:190',
-            'price'  => 'numeric|min:0|regex:/^\d*(\.\d{1,2})?$/',
-            'description'  => 'required|regex:/^[^<>]+$/u',
-            'image'  => 'required|image|max:2000',
+
+            'category_id' => 'required|integer',
+            'name'        => 'required|regex:/^[^<>]+$/u|unique:products,name|max:190',
+            'price'       => 'numeric|min:0|regex:/^\d*(\.\d{1,2})?$/',
+            'description' => 'required|regex:/^[^<>]+$/u',
+            'image'       => 'required|image|max:2000',
+            'is_visible'  => 'in:null,on',
         ];
     }
 }
