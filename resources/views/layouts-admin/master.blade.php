@@ -98,4 +98,4 @@
     </div>
   </div>
 
-@include('layouts.footer')
+@include('layouts-admin.footer')

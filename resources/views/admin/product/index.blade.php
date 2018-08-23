@@ -56,6 +56,10 @@
 			@endforeach
 		</table>
 	</div>
+
+	<ul class="my-5 pagination justify-content-center">
+		{{ $products->links() }}
+	</ul>
 @endif
 
 @endsection

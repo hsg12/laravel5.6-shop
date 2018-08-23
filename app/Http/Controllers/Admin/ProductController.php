@@ -18,8 +18,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        $cnt = 0;
+        $perPage = 5;
+        $products = Product::latest()->paginate($perPage);
+        $cnt = ($products->currentPage() - 1) * $perPage;
+
+        if (! $this->isPaginationPageExistsInUrl($products)) {
+            return view('errors.404');
+        }
+
         return view('admin.product.index', compact('products', 'cnt'));
     }
 

@@ -5,10 +5,14 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav">            
+            <ul class="navbar-nav">
+                @guest      
+
+                @else
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin') }}">Admin</a>
                 </li>
+                @endguest
             </ul>
 
             <ul class="navbar-nav ml-auto">
@@ -34,12 +38,15 @@
                            role="button" 
                            data-toggle="dropdown" 
                            aria-haspopup="true" 
-                           aria-expanded="false" v-pre
+                           aria-expanded="false" 
+                           v-pre
+                           onclick="event.preventDefault();"
+                           data-target="#logoutDropdown"
                         >
                             Hi {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="logoutDropdown">
                             <a class="dropdown-item" 
                                href="{{ route('logout') }}"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"

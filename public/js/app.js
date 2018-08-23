@@ -36463,6 +36463,17 @@ $(function () {
 	/* For Bootstrap 4 Tooltip */
 
 	$('[data-toggle="tooltip"]').tooltip();
+
+	// Back to top
+
+	$('#back-to-top').click(function () {
+		$('body,html').animate({
+			scrollTop: 0
+		}, 800);
+		return false;
+	});
+
+	//
 });
 
 /***/ }),

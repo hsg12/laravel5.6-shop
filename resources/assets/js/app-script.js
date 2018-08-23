@@ -46,6 +46,15 @@ $(function(){
 
     $('[data-toggle="tooltip"]').tooltip();
 
+    // Back to top
     
+    $('#back-to-top').click(function () {           
+        $('body,html').animate({
+            scrollTop: 0
+        }, 800);
+        return false;
+    });
+
+    //
 
 });
