@@ -1,12 +1,12 @@
 @extends('layouts.master')
-@section('title', "| Home")
+@section('title', "| Category: $category->name")
 
 @section('content')
 
-    <h4 class="mb-5">All Products</h4>
+    <h4 class="mb-5">{{ $category->name }}</h4>
 
     @if($products->count() <= 0)
-        <h5>Products list is empty</h5>
+        <h5 class="empty-items-message">There are not any products yet</h5>
     @else
 
         <?php

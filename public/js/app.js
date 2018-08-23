@@ -36474,6 +36474,9 @@ $(function () {
 	});
 
 	//
+
+	console.log(href);
+	$('.topnav').find('a[href="' + href + '"]').addClass('category-active-color');
 });
 
 /***/ }),
