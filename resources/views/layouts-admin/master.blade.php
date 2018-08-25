@@ -2,7 +2,7 @@
 
 	<!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav" style="padding: 0.5rem 1rem;">
-    <a class="navbar-brand" href="{{ url('/') }}">Site</a>
+    <a class="navbar-brand" href="{{ url('/') }}">Home Page</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -42,6 +42,18 @@
             </li>
             <li>
               <a href="{{ route('categories.index') }}">All categories</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Users" id="collapse-user-li">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseUsers" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-users"></i>
+            <span class="nav-link-text">Users</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseUsers">
+            <li>
+              <a href="{{ route('users.index') }}">Users list</a>
             </li>
           </ul>
         </li>

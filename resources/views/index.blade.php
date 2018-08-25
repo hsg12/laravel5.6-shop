@@ -6,7 +6,7 @@
     <h4 class="mb-5">All Products</h4>
 
     @if($products->count() <= 0)
-        <h5>Products list is empty</h5>
+        <h5 class="empty-items-message">Products list is empty</h5>
     @else
 
         <?php
