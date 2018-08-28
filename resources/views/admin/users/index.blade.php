@@ -8,8 +8,17 @@
 @if($users->count() <= 0)
     <h5>Users list is empty</h5>
 @else
+
+    <div class="row my-4">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <input type="text" class="form-control" id="usersSearch" placeholder="Search User or Admin" autocomplete="off">
+            </div> 
+        </div>
+    </div>
+
     <div class="table-responsive">
-        <table class="table table-striped table-hover mb-5">
+        <table class="table table-striped table-hover mb-5" id="usersTable">
             <tr>
                 <th>#</th>
                 <th>Name</th>

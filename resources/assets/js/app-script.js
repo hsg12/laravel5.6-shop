@@ -55,9 +55,19 @@ $(function(){
         return false;
     });
 
-    //
+    // Category highlighting
 
-    console.log(href);
     $('.topnav').find('a[href="' + href + '"]').addClass('category-active-color');
+
+    // For filtering users in admin/users area
+
+    $("#usersSearch").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#usersTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
+    //
 
 });

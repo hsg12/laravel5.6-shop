@@ -71,9 +71,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(User $user)
     {
-        //
+        $this->validate(request(), [
+            'role' => 'required|in:admin,user'
+        ]);
+        
+        $user->role = request('role');
+        $user->update();
+        
+        session()->flash('success', 'The role is updated!');
+        return redirect('admin/users');
     }
 
     /**
@@ -84,11 +92,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        dd($user);
-
-        /*$user->delete();
+        $user->delete();
         
         session()->flash('success', 'User successfully deleted!');
-        return back();*/
+        return back();
     }
 }
