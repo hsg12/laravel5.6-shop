@@ -491,6 +491,7 @@ html {
 }
 
 body {
+  padding-top: 120px;
   margin-bottom: 100px;
   /* Margin bottom by footer height */
 }
@@ -516,6 +517,20 @@ body.admin-body {
   text-align: center;
   background-color: #f9f9f9;
   border-top: .05rem solid #e5e5e5;
+  vertical-align: middle;
+}
+
+.footer-vertical-aligment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
 }
 
 .blog-footer p {
@@ -526,16 +541,16 @@ body.admin-body {
   margin-top: 10px;
 }
 
+#back-to-top-container {
+  display: none;
+}
+
 .nav-item {
   margin-right: 0;
 }
 
 #sidenavToggler {
   padding: 1.6em 1em !important;
-}
-
-body {
-  padding-top: 120px;
 }
 
 .col-form-label {
@@ -642,6 +657,7 @@ a:hover {
 
 .tag-strong {
   font-weight: bold !important;
+  color: #000 !important;
 }
 
 .app-form-check {

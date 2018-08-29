@@ -47,13 +47,19 @@ $(function(){
     $('[data-toggle="tooltip"]').tooltip();
 
     // Back to top
-    
-    $('#back-to-top').click(function () {           
-        $('body,html').animate({
-            scrollTop: 0
-        }, 800);
-        return false;
-    });
+
+    if ($(document).height() > 2000) {
+
+        $('*').removeClass('footer-vertical-aligment');
+
+        $('#back-to-top-container').show();
+        $('#back-to-top').click(function () {           
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+    }
 
     // Category highlighting
 
@@ -69,5 +75,6 @@ $(function(){
     });
 
     //
+
 
 });

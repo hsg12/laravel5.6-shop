@@ -42,17 +42,17 @@
             @endif
             
                 <div class="card">
-                    <img class="card-img-top img-fluid" src="{{ asset('storage/products/' . $product->image) }}" alt="Card image cap">
+                    <img class="card-img-top img-fluid mt-3" src="{{ asset('storage/products/' . $product->image) }}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">
                             <a href="{{ route('product', ['product' => $product->id]) }}">{{ $product->name }}</a>
                         </h5>
-                        <p class="card-text">{{ $product->description }}</p>
+                        <p class="card-text">{{ str_limit($product->description, 100) }}</p>
                     </div>
                     <div class="card-footer">
                         <div class="card-text">
                             <span class="product-price">Price: $<small class="text-muted">{{ $product->price }}</small></span>
-                            <button class="btn btn-sm btn-outline-success float-right">Bue</button>
+                            <button class="btn btn-sm btn-outline-success float-right">Buy</button>
                         </div>
                     </div>
                 </div>
@@ -72,5 +72,7 @@
     <ul class="app-pagination pagination justify-content-center">
         {{ $products->links() }}
     </ul>
-    
+
+    <br>   
+    <br> 
 @endsection

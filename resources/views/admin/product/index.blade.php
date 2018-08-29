@@ -17,7 +17,7 @@
 				<th>Description</th>
 				<th>Price</th>
 				<th>Image</th>
-				<th>Is visible</th>
+				<th>Visibility</th>
 				<th>Created at</th>
 				<th>Actions</th>
 			</tr>
