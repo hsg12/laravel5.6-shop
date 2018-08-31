@@ -27,7 +27,8 @@
         },
         "files": [ 
             "app/Helpers/sortNestedCategories.php",
-            "app/Helpers/getTitle.php"
+            "app/Helpers/getTitle.php",
+            "app/Helpers/getYear.php"
         ]
     },
     "autoload-dev": {

@@ -36464,7 +36464,7 @@ $(function () {
 
     $('[data-toggle="tooltip"]').tooltip();
 
-    // Back to top
+    /* Back to top */
 
     if ($(document).height() > 2000) {
 
@@ -36479,17 +36479,52 @@ $(function () {
         });
     }
 
-    // Category highlighting
+    /* Category highlighting */
 
     $('.topnav').find('a[href="' + href + '"]').addClass('category-active-color');
 
-    // For filtering users in admin/users area
+    /* For filtering users in admin/users area */
 
     $("#usersSearch").on("keyup", function () {
         var value = $(this).val().toLowerCase();
         $("#usersTable tr").filter(function () {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
         });
+    });
+
+    /* Add to cart */
+
+    $('#plus-product').on('click', function () {
+
+        var productPrice = $('#product-price').data('price');
+        var productCount = $('#product-count').text();
+        productCount++;
+
+        var result = productPrice * productCount;
+
+        $('#product-price').text(result.toFixed(2));
+        $('#product-count').text(productCount);
+    });
+
+    /* Remove from cart */
+
+    $('#minus-product').on('click', function () {
+
+        var productPrice = $('#product-price').data('price');
+        var productCount = $('#product-count').text();
+        productCount--;
+
+        if (productCount > 0) {
+            var result = productPrice * productCount;
+
+            $('#product-price').text(result.toFixed(2));
+            $('#product-count').text(productCount);
+        } else if (productCount == 0) {
+            $('#product-price').text(productPrice);
+            $('#product-count').text(0);
+        } else {
+            return;
+        }
     });
 
     //

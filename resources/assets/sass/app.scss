@@ -179,6 +179,38 @@ a {
     top: 2px;
 }
 
+.product-count-box {
+    font-size: 30px;
+}
+
+.product-count-box .badge {
+    padding: 0.25em 0.2em;
+    color: #919aa1;
+}
+
+.product-count-box + a.btn-sm {
+    padding: 0.6rem 1.1rem !important;
+}
+
+button.app-counter {
+    background: none;
+    border: 2px solid #919aa1;
+    font-size: 1.4rem;
+    padding: 0px 10px;
+    cursor: pointer;
+    color: #919aa1;
+}
+
+button.app-counter:focus, button.app-counter:hover {
+    outline: none;
+}
+
+button.app-counter:hover {
+    background-color: #ced4da;
+    border-color: #ced4da;
+    color: #fff;
+}
+
 @media only screen
 and (max-width: 576px) {
     .redundant-deck {

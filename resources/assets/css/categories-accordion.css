@@ -19,7 +19,7 @@ ul.topnav li a {
     line-height: 10px;
     padding: 14px 5px;
     text-decoration: none;
-    border-bottom: 1px solid #D3D3D3;
+    border-bottom: 1px solid #E5E5E5;
 }
 ul.topnav li a:hover {
     background-color: #CCC;

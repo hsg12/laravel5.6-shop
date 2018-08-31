@@ -5,7 +5,8 @@
 <div class="mb-5">
     <div class="row">
         <div class="col-sm-12">
-            <h4 class="mb-5">{{ $product->name }}</h4>
+            <h4>{{ $product->name }}</h4>
+            <div class="mb-5">Category: <strong class="tag-strong">{{ $product->category->name  }}</strong></div>
         </div>
     </div>
     <div class="row">
@@ -13,12 +14,18 @@
             <img class="img-fluid" src="{{ asset('storage/products/' . $product->image) }}" alt="Card image cap">
             <p class="mt-5">{{ $product->description }}</p>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 text-center">
             <div class="my-2">
-                <div>Category: <strong class="tag-strong">{{ $product->category->name  }}</strong></div>
-                <div>Price: <strong class="tag-strong">${{ $product->price }}</strong></div>
+                <div>Model: <strong class="tag-strong">{{ $product->name  }}</strong></div>
+                <div>Price: $<strong class="tag-strong" id="product-price" data-price="{{ $product->price }}">{{ $product->price }}</strong></div>
             </div>
-            <a href="#" class="btn btn-sm btn-outline-success mt-3">Add To Cart</a>
+            <hr>
+            <div class="product-count-box">
+                <button type="button" class="app-counter" id="plus-product">&plus;</button>
+                <span class="badge badge-light" id="product-count">0</span>
+                <button type="button" class="app-counter" id="minus-product">&minus;</button>
+            </div>
+            <a href="#" class="btn btn-sm btn-outline-secondary mt-3">Add To Cart</a>
         </div>
     </div>
 </div>  

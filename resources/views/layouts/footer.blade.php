@@ -1,5 +1,5 @@
         <footer class="blog-footer footer">
-            <p class="footer-vertical-aligment">&copy; 2017 - 2018 by PHP-User.</p>
+            <p class="footer-vertical-aligment">&copy; {{ getYear() }} by PHP-User.</p>
             <p id="back-to-top-container"><a href="#" id="back-to-top">Back to Top</a></p>
         </footer>
 
