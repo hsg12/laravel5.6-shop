@@ -11,7 +11,7 @@ class CategoryController extends Controller
     public function index(Category $category)
     {
         $perPage = 9;
-        $products = Product::where('is_visible', 'on')->where('category_id', $category->id)->paginate($perPage);
+        $products = Product::where('is_visible', 'on')->where('category_id', $category->id)->latest()->paginate($perPage);
         if (! $this->isPaginationPageExistsInUrl($products)) {
             return view('errors.404');
         }

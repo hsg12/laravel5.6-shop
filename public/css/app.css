@@ -501,6 +501,12 @@ body.admin-body {
   margin-bottom: 0;
 }
 
+h1#navbar-brand {
+  letter-spacing: 1px;
+  font-size: 1.09375rem;
+  margin-bottom: 0;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -649,12 +655,6 @@ a:hover {
   color: #d00 !important;
 }
 
-.product-price {
-  height: 35px;
-  line-height: 35px;
-  display: inline-block;
-}
-
 .tag-strong {
   font-weight: bold !important;
   color: #000 !important;
@@ -674,17 +674,17 @@ a:hover {
   color: #919aa1;
 }
 
-.product-count-box + a.btn-sm {
+.product_add_to_cart button.btn-sm {
   padding: 0.6rem 1.1rem !important;
 }
 
 button.app-counter {
   background: none;
-  border: 2px solid #919aa1;
+  border: 2px solid #1F9BCF;
   font-size: 1.4rem;
   padding: 0px 10px;
   cursor: pointer;
-  color: #919aa1;
+  color: #1F9BCF;
 }
 
 button.app-counter:focus,
@@ -693,9 +693,13 @@ button.app-counter:hover {
 }
 
 button.app-counter:hover {
-  background-color: #ced4da;
-  border-color: #ced4da;
+  background-color: #1F9BCF;
+  border-color: #1F9BCF;
   color: #fff;
+}
+
+.app-cart-badge a span.badge {
+  font-size: 100% !important;
 }
 
 @media only screen and (max-width: 576px) {

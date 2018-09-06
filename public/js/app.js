@@ -36492,43 +36492,89 @@ $(function () {
         });
     });
 
-    /* Add to cart */
+    /* Plus product count */
 
-    $('#plus-product').on('click', function () {
+    $('.plus-product').on('click', function () {
 
-        var productPrice = $('#product-price').data('price');
-        var productCount = $('#product-count').text();
+        if (href != 'http://shop.loc/cart') {
+            // For product page
+            var productPriceContainer = $(this).parentsUntil('.product-data-aside').siblings('div').find('.product-price');
+        } else {
+            // For cart page
+            var productPriceContainer = $(this).siblings('h5').find('.product-price');
+        }
+
+        var productCountContainer = $(this).siblings('span.product-count');
+
+        var productPrice = productPriceContainer.data('price');
+        var productCount = productCountContainer.text();
         productCount++;
 
         var result = productPrice * productCount;
 
-        $('#product-price').text(result.toFixed(2));
-        $('#product-count').text(productCount);
+        productPriceContainer.text(result.toFixed(2));
+        productCountContainer.text(productCount);
     });
 
-    /* Remove from cart */
+    /* Minus product count */
 
-    $('#minus-product').on('click', function () {
+    $('.minus-product').on('click', function () {
 
-        var productPrice = $('#product-price').data('price');
-        var productCount = $('#product-count').text();
+        if (href != 'http://shop.loc/cart') {
+            // For product page
+            var productPriceContainer = $(this).parentsUntil('.product-data-aside').siblings('div').find('.product-price');
+        } else {
+            // For cart page
+            var productPriceContainer = $(this).siblings('h5').find('.product-price');
+        }
+        var productCountContainer = $(this).siblings('span.product-count');
+
+        var productPrice = productPriceContainer.data('price');
+        var productCount = productCountContainer.text();
         productCount--;
 
         if (productCount > 0) {
             var result = productPrice * productCount;
 
-            $('#product-price').text(result.toFixed(2));
-            $('#product-count').text(productCount);
-        } else if (productCount == 0) {
-            $('#product-price').text(productPrice);
-            $('#product-count').text(0);
-        } else {
-            return;
+            productPriceContainer.text(result.toFixed(2));
+            productCountContainer.text(productCount);
+        }
+
+        // For product page
+        if (href != 'http://shop.loc/cart' && productCount == 0) {
+            productPriceContainer.text(productPrice);
+            productCountContainer.text(0);
         }
     });
 
-    //
+    /* Add product to cart */
 
+    $('.product_add_to_cart').on('submit', function (e) {
+        e.preventDefault();
+
+        // This will only set the header if it is a local request.
+        $.ajaxSetup({
+            beforeSend: function beforeSend(xhr, type) {
+                if (!type.crossDomain) {
+                    xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+                }
+            }
+        });
+
+        var productCount = $('.product-count').text();
+        var productId = $('input:hidden[name=product-id]').val();
+
+        $.ajax({
+            url: '/cart/add',
+            method: 'post',
+            data: { cnt: productCount, id: productId },
+            success: function success(data) {
+                if (data) {
+                    console.log(data);
+                }
+            }
+        });
+    });
 });
 
 /***/ }),

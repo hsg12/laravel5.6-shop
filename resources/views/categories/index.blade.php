@@ -3,7 +3,20 @@
 
 @section('content')
 
-    <h4 class="mb-5">{{ $category->name }}</h4>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="d-flex mb-5">
+                <div class="mr-auto">
+                    <h4 class="mt-1">{{ $category->name }}</h4>
+                </div>
+                <div class="app-cart-badge">
+                    <a href="{{ route('cart') }}" class="btn btn-sm btn-info">
+                        Cart&nbsp;&nbsp;<span class="badge badge-light">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     @if($products->count() <= 0)
         <h5 class="empty-items-message">There are not any products yet</h5>
@@ -50,9 +63,9 @@
                         <p class="card-text">{{ str_limit($product->description, 100) }}</p>
                     </div>
                     <div class="card-footer">
-                        <div class="card-text">
-                            <span class="product-price">Price: $<small class="text-muted">{{ $product->price }}</small></span>
-                            <button class="btn btn-sm btn-outline-success float-right">Buy</button>
+                        <div class="card-text text-center">
+                            <div class="mb-2">Price: $<small class="tag-strong text-muted">{{ $product->price }}</small></div>
+                            <div><button class="btn btn-sm btn-outline-info">Add To Cart</button></div>
                         </div>
                     </div>
                 </div>
