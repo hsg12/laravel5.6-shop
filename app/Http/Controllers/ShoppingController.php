@@ -10,7 +10,6 @@ class ShoppingController extends Controller
 {
     public function index() 
     {
-        //PCart::destroy();
         return view('shopping.index');
     }
 
@@ -31,11 +30,31 @@ class ShoppingController extends Controller
 
             Cart::associate($cartItem->rowId, Product::class);
 
-            $result = 'success';
+            /*
+                If we first added 2 products to the cart, then we change the number to 3 and then add it again, 
+                we will have 5 products in cart instead of 3. 
+                To avoid this, we update our product information.
+            */
+            Cart::update($cartItem->rowId, $cnt);
+
+            $productsCount = Cart::count();
+
+            $result = ['result' => 'success', 'productCount' => $productsCount];
         } else {
-            $result = 'error';
+            $result = ['result' => 'error'];
         }
 
-        return response()->json(['result' => $result]);
+        return response()->json($result);
+    }
+
+    public function delete_from_cart(Product $product) {
+        if ($product) {
+            foreach(Cart::content() as $item){
+                if ($product->id === $item->id) {
+                    Cart::remove($item->rowId);
+                }
+            }
+        }
+        return back();
     }
 }

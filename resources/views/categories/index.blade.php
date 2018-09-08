@@ -9,11 +9,7 @@
                 <div class="mr-auto">
                     <h4 class="mt-1">{{ $category->name }}</h4>
                 </div>
-                <div class="app-cart-badge">
-                    <a href="{{ route('cart') }}" class="btn btn-sm btn-info">
-                        Cart&nbsp;&nbsp;<span class="badge badge-light">0</span>
-                    </a>
-                </div>
+                @include('layouts.cart')
             </div>
         </div>
     </div>
@@ -65,7 +61,11 @@
                     <div class="card-footer">
                         <div class="card-text text-center">
                             <div class="mb-2">Price: $<small class="tag-strong text-muted">{{ $product->price }}</small></div>
-                            <div><button class="btn btn-sm btn-outline-info">Add To Cart</button></div>
+                            <form class="add_to_cart">
+                                @csrf
+                                <input type="hidden" name="product-id" value="{{ $product->id }}">
+                                <button class="btn btn-sm btn-outline-info mt-3">Add To Cart Foo</button>
+                            </form>
                         </div>
                     </div>
                 </div>

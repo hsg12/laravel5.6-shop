@@ -11,11 +11,7 @@
                     <h4 class="mt-1">{{ $product->name }}</h4>
                     <div class="mb-5">Category: <strong class="tag-strong">{{ $product->category->name  }}</strong></div>
                 </div>
-                <div class="app-cart-badge">
-                    <a href="{{ route('cart') }}" class="btn btn-sm btn-info">
-                        Cart&nbsp;&nbsp;<span class="badge badge-light">0</span>
-                    </a>
-                </div>
+                @include('layouts.cart')
             </div>
         </div>
     </div>
@@ -29,20 +25,22 @@
 
             <div class="my-2">
                 <div>Model: <strong class="tag-strong">{{ $product->name  }}</strong></div>
-                <div>Price: $<strong class="tag-strong product-price" data-price="{{ $product->price }}">{{ $product->price }}</strong></div>
+                <div>Price: $<strong class="tag-strong product-price" data-price="{{ $product->price }}">{{ $total ? $total : $product->price }}</strong></div>
             </div>
             <hr>
             <div class="product-count-box">
                 <button type="button" class="app-counter plus-product">&plus;</button>
-                <span class="badge product-count">0</span>
+                <span class="badge product-count">{{ $productCntInCart }}</span>
                 <button type="button" class="app-counter minus-product">&minus;</button>
             </div>
             
-            <form action="{{ route('cart.add') }}" method="post" class="product_add_to_cart">
+            <form class="product_add_to_cart">
                 @csrf
                 <input type="hidden" name="product-id" value="{{ $product->id }}">
                 <button class="btn btn-sm btn-outline-info mt-3">Add To Cart</button>
             </form>
+
+            <div class="success-add text-danger mt-3"></div>
             
         </div>
     </div>

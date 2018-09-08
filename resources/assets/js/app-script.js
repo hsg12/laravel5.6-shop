@@ -130,7 +130,15 @@ $(function(){
         } 
     })
 
-    /* Add product to cart */
+    /* Add product to cart from product page */
+
+    // Display message
+    var displayMessage = function (obj, message) {
+        obj.text(message).fadeIn(500);
+        setTimeout(function() {
+            obj.fadeOut(500);
+        }, 4000);
+    };
 
     $('.product_add_to_cart').on('submit', function(e){
         e.preventDefault();
@@ -153,7 +161,44 @@ $(function(){
             data: {cnt: productCount, id: productId},
             success: function(data){
                 if (data) {
-                    console.log(data);
+                    $('.app-cart-badge a span.badge').text(data.productCount);
+                    if (data.result == 'success') {
+                        displayMessage($('.success-add'), 'Product added to cart');
+                        $('form.product_add_to_cart button').removeClass('btn-outline-info').addClass('btn-outline-success');
+                    }
+                }
+            }
+        });
+    });
+
+    /* Add product to cart from home and category pages */
+
+    $('.add_to_cart').on('submit', function(e){
+        e.preventDefault();
+
+        var obj = $(this);
+        var productId = obj.children().eq(1).val();
+        var productCount = 1; // From home and category page product count is always 1
+
+        // This will only set the header if it is a local request.
+        $.ajaxSetup({
+            beforeSend: function(xhr, type) {
+                if (!type.crossDomain) {
+                    xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+                }
+            },
+        });
+
+        $.ajax({
+            url: '/cart/add',
+            method: 'post',
+            data: {cnt: productCount, id: productId},
+            success: function(data){
+                if (data) {
+                    $('.app-cart-badge a span.badge').text(data.productCount);
+                    if (data.result == 'success') {
+                        obj.children().eq(2).removeClass('btn-outline-info').addClass('btn-outline-success');
+                    }
                 }
             }
         });
