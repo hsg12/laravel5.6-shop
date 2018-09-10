@@ -47,6 +47,30 @@ class ShoppingController extends Controller
         return response()->json($result);
     }
 
+    public function update() 
+    {
+        $result = '';
+        $cnt = abs((int)request('cnt'));
+        $rowId = request('id');
+
+        if ($cnt && $rowId) {
+            
+            Cart::update($rowId, $cnt);
+
+            $result = ['result' => 'success'];
+        } else {
+            $result = ['result' => 'error'];
+        }
+
+        return response()->json($result);
+    }
+
+
+    public function order() 
+    {
+        return view('shopping.order');
+    }
+
     public function delete_from_cart(Product $product) {
         if ($product) {
             foreach(Cart::content() as $item){

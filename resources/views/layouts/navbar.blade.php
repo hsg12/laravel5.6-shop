@@ -13,6 +13,9 @@
                     <a class="nav-link" href="{{ route('admin') }}">Admin</a>
                 </li>
                 @endif
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('search') }}"><i class="fa fa-fw fa-search"></i> Search</a>
+                </li>
             </ul>
 
             <ul class="navbar-nav ml-auto">

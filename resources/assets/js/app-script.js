@@ -74,6 +74,37 @@ $(function(){
         });
     });
 
+    /* Ajax Setup for Laravel */
+
+    function ajaxSetup () {
+        // This will only set the header if it is a local request.
+        $.ajaxSetup({
+            beforeSend: function(xhr, type) {
+                if (!type.crossDomain) {
+                    xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+                }
+            },
+        });
+    }
+
+    /* Update product count in cart ( cart page ) */
+
+    function UpdateCart (rowId, quantity) {
+
+        ajaxSetup();
+
+        $.ajax({
+            url: '/cart/update',
+            method: 'post',
+            data: {cnt: quantity, id: rowId},
+            success: function(data){
+                /*if (data) {
+                    console.log(data);
+                }*/
+            }
+        });
+    }
+
     /* Plus product count */
 
     $('.plus-product').on('click', function(){
@@ -96,6 +127,12 @@ $(function(){
         
         productPriceContainer.text(result.toFixed(2));
         productCountContainer.text(productCount);
+
+        // For cart page
+        if (href == 'http://shop.loc/cart') {
+            var rowId = $(this).siblings('span').data('productrowid');
+            UpdateCart (rowId, productCount);
+        }
 
     })
 
@@ -128,6 +165,12 @@ $(function(){
             productPriceContainer.text(productPrice);
             productCountContainer.text(0);
         } 
+
+        // For cart page
+        if (href == 'http://shop.loc/cart') {
+            var rowId = $(this).siblings('span').data('productrowid');
+            UpdateCart (rowId, productCount);
+        }
     })
 
     /* Add product to cart from product page */
@@ -143,17 +186,10 @@ $(function(){
     $('.product_add_to_cart').on('submit', function(e){
         e.preventDefault();
 
-        // This will only set the header if it is a local request.
-        $.ajaxSetup({
-            beforeSend: function(xhr, type) {
-                if (!type.crossDomain) {
-                    xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-                }
-            },
-        });
-
         var productCount = $('.product-count').text();
         var productId = $('input:hidden[name=product-id]').val();
+
+        ajaxSetup();
 
         $.ajax({
             url: '/cart/add',
@@ -180,14 +216,7 @@ $(function(){
         var productId = obj.children().eq(1).val();
         var productCount = 1; // From home and category page product count is always 1
 
-        // This will only set the header if it is a local request.
-        $.ajaxSetup({
-            beforeSend: function(xhr, type) {
-                if (!type.crossDomain) {
-                    xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-                }
-            },
-        });
+        ajaxSetup();
 
         $.ajax({
             url: '/cart/add',
@@ -203,6 +232,11 @@ $(function(){
             }
         });
     });
+
+    
+
+    
+
 
 
 });

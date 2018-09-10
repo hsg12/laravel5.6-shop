@@ -4,8 +4,11 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('/search',                   'SearchController@index')->name('search');
 Route::get('/cart',                     'ShoppingController@index')->name('cart');
 Route::post('/cart/add',                'ShoppingController@add_to_cart');
+Route::get('/cart/order',               'ShoppingController@order')->name('order');
+Route::post('/cart/update',             'ShoppingController@update');
 Route::delete('/cart/delete/{product}', 'ShoppingController@delete_from_cart')->name('delete.from.cart');
 
 Route::group(['middleware' => ['auth', 'admin', 'web']], function () {

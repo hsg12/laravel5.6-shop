@@ -9,7 +9,7 @@
             @if(! Cart::count())
                 <h4 class="mt-1">Cart is empty</h4>
             @else
-                <h4 class="mt-1 mb-5">Your order{{ Cart::count() > 1 ? 's' : '' }}</h4>
+                <h4 class="mt-1 mb-5">Your order</h4>
                 @foreach(Cart::content() as $product)
                     <div>
                         <div class="row">
@@ -38,7 +38,9 @@
                             <div class="col-sm-4 col-md-3">
                                 <div class="product-count-box mr-auto text-center mt-3">
                                     <button type="button" class="app-counter plus-product">&plus;</button>
-                                    <span class="badge product-count">{{ $product->qty }}</span>
+                                    <span class="badge product-count" data-productrowid="{{ $product->rowId }}">
+                                        {{ $product->qty }}
+                                    </span>
                                     <button type="button" class="app-counter minus-product">&minus;</button>
 
                                     <h5 class="mt-3">Total: $<strong class="text-danger product-price" data-price="{{ $product->price }}">{{ number_format($product->price * $product->qty, 2, '.', '') }}</strong>
@@ -50,8 +52,18 @@
 
                     <hr>
                 @endforeach
+
+
             
-                <div class="col-sm-12 text-center my-5"><a href="#" class="btn btn-outline-success">Valide purchase</a></div>
+                <div class="col-sm-12 text-center my-5">
+                    {!! Auth::check() ? '' : '<div class="mb-2 text-danger">You need to be authorized to continue</div>' !!}
+                    <button class="btn btn-outline-success" 
+                            {{ Auth::check() ? '' : 'disabled' }}
+                            onclick="location.href='{{ route('order') }}'"
+                    >
+                        Valide purchase
+                    </button>
+                </div>
             @endif;
         </div>
     </div>
