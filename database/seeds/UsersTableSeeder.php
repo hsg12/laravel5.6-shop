@@ -13,7 +13,8 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
         	'name' => 'John Smith',
-        	'email' => 'smith@test.com',
+            'email' => 'smith@test.com',
+        	'address' => 'Some address here',
         	'password' => '$2y$10$OJsadONpbRzd5FNPiqDbJulHMvCwRZdFQakCVYTiVUnBYv1R8ATO.',
         	'created_at' => date('Y-m-d H:m:s'),
         	'updated_at' => date('Y-m-d H:m:s')

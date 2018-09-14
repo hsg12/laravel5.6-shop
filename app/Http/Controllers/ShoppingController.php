@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Order;
 use Cart;
+use Mail;
+use Stripe\Stripe;
+use Stripe\Charge;
 
 class ShoppingController extends Controller
 {
@@ -57,7 +61,7 @@ class ShoppingController extends Controller
             
             Cart::update($rowId, $cnt);
 
-            $result = ['result' => 'success'];
+            $result = ['result' => 'success', 'total' => Cart::total(2, '.', ','), 'count' => Cart::count()];
         } else {
             $result = ['result' => 'error'];
         }
@@ -65,10 +69,39 @@ class ShoppingController extends Controller
         return response()->json($result);
     }
 
+    public function checkout() 
+    { 
+        $products = [];
+        foreach(Cart::content() as $item){
+            
+            $products[$item->id] = $item->qty;
+        }
+        
 
-    public function order() 
-    {
-        return view('shopping.order');
+        Order::create([
+            'user_id' => auth()->user()->id,
+            'products' => json_encode($products)
+        ]);
+
+
+
+
+        /*Stripe::setApiKey("sk_test_POvKg52ipVqyiHK7AbSfpYAi");
+
+        $charge = Charge::create([
+            'amount' => Cart::total() * 100,
+            'currency' => 'usd',
+            'description' => 'Online Shop charge',
+            'source' => request('stripeToken'),
+        ]);
+
+        session()->flash('success', 'Purchase successful, wait for our email.');
+
+        Cart::destroy();
+
+        Mail::to(request('userEmail'))->send(new \App\Mail\PurchaseSuccessful());*/
+
+        return redirect()->route('home');
     }
 
     public function delete_from_cart(Product $product) {

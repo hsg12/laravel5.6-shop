@@ -702,6 +702,20 @@ button.app-counter:hover {
   font-size: 100% !important;
 }
 
+.app-search-form {
+  position: relative;
+}
+
+.app-search-form button {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.app-search-form button span.fa {
+  font-size: 1.5em;
+}
+
 @media only screen and (max-width: 576px) {
   .redundant-deck {
     display: block;

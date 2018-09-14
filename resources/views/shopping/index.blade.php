@@ -43,7 +43,7 @@
                                     </span>
                                     <button type="button" class="app-counter minus-product">&minus;</button>
 
-                                    <h5 class="mt-3">Total: $<strong class="text-danger product-price" data-price="{{ $product->price }}">{{ number_format($product->price * $product->qty, 2, '.', '') }}</strong>
+                                    <h5 class="mt-3">Sum: $<strong class="text-danger product-price" data-price="{{ $product->price }}">{{ number_format($product->price * $product->qty, 2, '.', '') }}</strong>
                                     </h5>
                                 </div>
                             </div>
@@ -53,18 +53,61 @@
                     <hr>
                 @endforeach
 
-
-            
+                <div class="col-sm-12">
+                    <h5 class="mt-3">
+                        <div>Count: 
+                            <strong class="text-danger total-count">{{ Cart::count() }}</strong>
+                        </div>
+                        <div>Total: $<strong class="text-danger total-price">{{ Cart::total(2, '.', ',') }}</strong></div>
+                    </h5>
+                </div>
+                    
                 <div class="col-sm-12 text-center my-5">
                     {!! Auth::check() ? '' : '<div class="mb-2 text-danger">You need to be authorized to continue</div>' !!}
-                    <button class="btn btn-outline-success" 
-                            {{ Auth::check() ? '' : 'disabled' }}
-                            onclick="location.href='{{ route('order') }}'"
-                    >
-                        Valide purchase
-                    </button>
+
+                    <form action="{{ route('cart.checkout') }}" method="POST" id="stripe-form">
+
+                        <fieldset {{ Auth::check() ? '' : 'disabled' }} id="app-fieldset">
+
+                        @csrf
+
+                        <input type="hidden" id="stripeToken" name="stripeToken">
+                        <input type="hidden" 
+                               id="userEmail" 
+                               name="userEmail" 
+                               value="{{ Auth()->user() ? Auth()->user()->email : '' }}">
+
+                        <script
+                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="pk_test_HFPy0sQnqO1mVmknoxo0iNmt"
+                            data-amount={{ Cart::total(2, '.', '') }}
+                            data-name="Online Shop"
+                            data-description="Forward"
+                            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                            data-locale="auto">
+                        </script>
+                        </fieldset>
+                    </form>
                 </div>
-            @endif;
+
+
+
+
+
+
+
+                <form action="{{ route('cart.checkout') }}" method="POST">
+                    @csrf
+
+                    <button class="btn btn-info">Foo</button>
+                </form>
+
+
+                
+
+
+
+            @endif
         </div>
     </div>
     

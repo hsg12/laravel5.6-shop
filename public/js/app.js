@@ -36516,12 +36516,54 @@ $(function () {
             method: 'post',
             data: { cnt: quantity, id: rowId },
             success: function success(data) {
-                /*if (data) {
-                    console.log(data);
-                }*/
+                if (data) {
+                    var total = data.total;
+
+                    $('.total-count').text(data.count);
+                    $('.total-price').text(total);
+
+                    total = total.replace(",", "");
+                    $('#stripe-form script').attr('data-amount', total);
+                }
             }
         });
     }
+
+    /* Stripe Configuration block */
+
+    if (href == 'http://shop.loc/cart') {
+        var handler = StripeCheckout.configure({
+            key: 'pk_test_HFPy0sQnqO1mVmknoxo0iNmt',
+            image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+            token: function token(_token) {
+                $("#stripeToken").val(_token.id);
+                $("#stripe-form").submit();
+            }
+        });
+    }
+
+    $('.stripe-button-el').on('click', function (e) {
+        var dataTotal = $('#stripe-form script').attr('data-amount');
+        $('#stripe-form script').attr('data-amount', dataTotal);
+
+        var amountInCents = Math.floor(dataTotal * 100);
+        var displayAmount = parseFloat(Math.floor(dataTotal * 100) / 100).toFixed(2);
+
+        handler.open({
+            name: 'Online Shop',
+            email: $("#userEmail").val(),
+            description: 'Continue shopping',
+            amount: amountInCents
+        });
+        e.preventDefault();
+    });
+
+    // Close Checkout on page navigation
+    $(window).on('popstate', function () {
+        handler.close();
+    });
+
+    /* End Stripe Configuration block */
 
     /* Plus product count */
 
@@ -36649,6 +36691,8 @@ $(function () {
             }
         });
     });
+
+    /*  */
 });
 
 /***/ }),

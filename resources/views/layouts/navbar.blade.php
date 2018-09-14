@@ -10,7 +10,10 @@
             <ul class="navbar-nav">
                 @if( (auth()->user() && auth()->user()->role === 'superadmin') || (auth()->user() && auth()->user()->role === 'admin') )
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin') }}">Admin</a>
+                    <a class="nav-link" href="{{ route('admin') }}">
+                        <i class="fa fa-fw fa-user-secret"></i>
+                        Admin
+                    </a>
                 </li>
                 @endif
                 <li class="nav-item">
@@ -23,13 +26,13 @@
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">
-                            <i class="fa fa-sign-in" aria-hidden="true"></i>
+                            <i class="fa fa-fw fa-sign-in" aria-hidden="true"></i>
                             {{ __('Login') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('register') }}">
-                            <i class="fa fa-user-plus" aria-hidden="true"></i>
+                            <i class="fa fa-fw fa-user-plus" aria-hidden="true"></i>
                             {{ __('Register') }}
                         </a>
                     </li>
@@ -46,7 +49,7 @@
                            onclick="event.preventDefault();"
                            data-target="#logoutDropdown"
                         >
-                            Hi {{ Auth::user()->name }} <span class="caret"></span>
+                            <i class="fa fa-fw fa-user-circle-o"></i> {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="logoutDropdown">

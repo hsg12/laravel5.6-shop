@@ -11,6 +11,10 @@
     <div>Name: <strong class="tag-strong">{{ $user->name }}</strong></div>
     <div>Email: <strong class="tag-strong">{{ $user->email }}</strong></div>
     <div>Created at: <strong class="tag-strong">{{ $user->created_at->toFormattedDateString() }}</strong></div>
+    <div>Address: <strong class="tag-strong">{{ $user->address }}</strong></div>
+    @if($user->phone)
+    <div>Phone: <strong class="tag-strong">{{ $user->phone }}</strong></div>
+    @endif
     <hr>
     <!-- <form action="{{ url('/') }}/admin/users/{{ $user->id }}" method="post"> -->
     <form action="{{ route('users.update', ['user' => $user->id]) }}" method="post">
