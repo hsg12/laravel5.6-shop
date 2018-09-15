@@ -9,6 +9,8 @@ use App\Product;
 
 class OrderController extends Controller
 {
+    protected $status = ['Accepted', 'In Progress', 'Late', 'Delivered', 'Canceled'];
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +20,7 @@ class OrderController extends Controller
     {
         $orders = Order::all();
         $cnt = 0;
-
+        
         return view('admin.orders.index', compact('orders', 'cnt'));
     }
 
@@ -53,9 +55,10 @@ class OrderController extends Controller
     {
         $ordersArray = json_decode($order->products, true);
         $ids = array_keys($ordersArray);
+        $status = $this->status;
 
         $products = Product::whereIn('id', $ids)->get();
-        return view('admin.orders.show', compact('order', 'products', 'ordersArray'));
+        return view('admin.orders.show', compact('order', 'products', 'ordersArray', 'status'));
     }
 
     /**
@@ -64,9 +67,17 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Order $order)
     {
-        //
+        $this->validate(request(), [
+            'status' => 'required|in:' . implode(',' , $this->status),
+        ]);
+
+        $order->status = request('status');
+        $order->update();
+
+        session()->flash('success', 'Order status updated!');
+        return redirect()->route('orders.index');
     }
 
     /**
@@ -81,14 +92,37 @@ class OrderController extends Controller
         //
     }
 
+    public function history()
+    {
+        $orders = Order::onlyTrashed()->get();
+        $cnt = 0;
+
+        return view('admin.orders.history', compact('orders', 'cnt'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        
+        session()->flash('success', 'Order deleted!');
+        return back();
+    }
+
+    public function delete_permanently($id)
+    {
+        $order = Order::onlyTrashed()->where('id', $id)->first();
+        //$order->forceDelete();
+        $order->history()->forceDelete();
+
+
+        
+        session()->flash('success', 'Order permanently deleted!');
+        return back();
     }
 }

@@ -49,16 +49,12 @@
 
             <hr>
             <div>
-                <form action="" class="">
+                <form action="{{ route('orders.edit', ['id' => $order->id]) }}">
                     <div class="form-group">Status:
                         <select name="status" class="form-control mt-2">
-                            <option value="Late">Late</option>
-                            <option value="Accepted">Accepted</option>
-                            <option value="In Progress">In Progress</option>
-                            <option value="Late">Late</option>
-                            <option value="Delivered">Delivered</option>
-                            <option value="">Canceled</option>
-                            <option value="">Canceled</option>
+                            @foreach($status as $item)
+                            <option value="{{ $item }}">{{ $item }}</option>
+                            @endforeach
                         </select>
                         <div class="mt-2">
                             <button class="btn btn-outline-info btn-sm">Change</button>

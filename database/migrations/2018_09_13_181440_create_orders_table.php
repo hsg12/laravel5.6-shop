@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('status', 100)->default('accepted');
             $table->timestamps();
             $table->index('user_id');
+            $table->softDeletes();
         });
     }
 

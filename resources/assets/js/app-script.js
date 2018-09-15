@@ -4,13 +4,13 @@ $(function(){
 
 	/* To leave open admin menu when it active and for highlighting */
 
-	let linksLength = $('#exampleAccordion > li > a').length;
+	let linksLength = $('#exampleAccordion > li > ul > li').length;
 
 	for (var i = 0; i <= linksLength ; i++) {
 		const accordionLink = $('#exampleAccordion li ul li:eq(' + i + ') a');
 		let attrHref = accordionLink.attr('href');
 
-		if ( href.match(new RegExp('^' + attrHref)) ) {  
+		if ( href.match(new RegExp('^' + attrHref)) ) {
 			accordionLink.addClass('active-color');  
 			accordionLink.parents('ul').addClass('show');  
 			accordionLink.parents('ul').siblings('a').removeClass('collapsed');
@@ -70,6 +70,13 @@ $(function(){
     $("#usersSearch").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $("#usersTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
+    $("#ordersSearch").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#ordersTable tr").filter(function() {
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });

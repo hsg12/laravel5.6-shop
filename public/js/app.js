@@ -36422,7 +36422,7 @@ $(function () {
 
     /* To leave open admin menu when it active and for highlighting */
 
-    var linksLength = $('#exampleAccordion > li > a').length;
+    var linksLength = $('#exampleAccordion > li > ul > li').length;
 
     for (var i = 0; i <= linksLength; i++) {
         var accordionLink = $('#exampleAccordion li ul li:eq(' + i + ') a');
@@ -36488,6 +36488,13 @@ $(function () {
     $("#usersSearch").on("keyup", function () {
         var value = $(this).val().toLowerCase();
         $("#usersTable tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+        });
+    });
+
+    $("#ordersSearch").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#ordersTable tr").filter(function () {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
         });
     });

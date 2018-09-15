@@ -1,19 +1,19 @@
 @extends('layouts-admin.master')
-@section('title', "| Orders")
+@section('title', "| Orders history")
 
 @section('content')
 
-<h4 class="mt-3 mb-4">Orders</h4>
+<h4 class="mt-3 mb-4">Orders history</h4>
 
 <div class="row">
     <div class="col-sm-12">
         @if($orders->count() <= 0)
-    <h5>Orders list is empty</h5>
+    <h5>History list is empty</h5>
         @else
             <div class="row my-4">
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="ordersSearch" placeholder="Search Order" autocomplete="off">
+                        <input type="text" class="form-control" id="ordersSearch" placeholder="Search Order in History" autocomplete="off">
                     </div> 
                 </div>
             </div>
@@ -27,6 +27,7 @@
                         <th>Email</th>
                         <th>Order`s date</th>
                         <th>Status</th>
+                        <th>Deleted at</th>
                         <th>Actions</th>
                     </tr>
                     @foreach($orders as $order)
@@ -37,10 +38,9 @@
                         <td>{{ $order->user->email }}</td>
                         <td>{{ $order->created_at->toDateTimeString() }}</td>
                         <td>{{ ucfirst($order->status) }}</td>
+                        <td>{{ $order->deleted_at ? $order->deleted_at->toDateTimeString() : '' }}</td>
                         <td>
-                            <a href="{{ route('orders.show', ['id' => $order->id]) }}">Show</a> |
-
-                            <form action="{{ route('orders.destroy', ['id' => $order->id]) }}" 
+                            <form action="{{ route('orders.delete.permanently', ['id' => $order->id]) }}" 
                                   method="post" 
                                   class="app-delete-form confirm-plugin-delete"
                             >
@@ -48,7 +48,7 @@
                                 @csrf
                                 @method('delete')
 
-                                <input type="submit" name="delete" value="Delete">
+                                <input type="submit" name="delete" value="Permanently delete">
                             </form>
                         </td>
                     </tr>

@@ -18,6 +18,8 @@ Route::group(['middleware' => ['auth', 'admin', 'web']], function () {
     Route::resource('/admin/categories', 'Admin\CategoryController');
     Route::resource('/admin/users',      'Admin\UserController');
     Route::resource('/admin/orders',     'Admin\OrderController');
+    Route::get('/admin/history',         'Admin\OrderController@history')->name('orders.history');
+    Route::delete('/admin/delete/{id}',  'Admin\OrderController@delete_permanently')->name('orders.delete.permanently');
 });
 
 Route::get('/{category}', 'CategoryController@index')->name('category');
