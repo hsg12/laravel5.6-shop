@@ -11,6 +11,7 @@ Route::post('/cart/add',                'ShoppingController@add_to_cart');
 Route::post('/cart/checkout',           'ShoppingController@checkout')->name('cart.checkout');
 Route::post('/cart/update',             'ShoppingController@update');
 Route::delete('/cart/delete/{product}', 'ShoppingController@delete_from_cart')->name('delete.from.cart');
+Route::get('/orders',                   'OrderController@index')->name('show.orders');
 
 Route::group(['middleware' => ['auth', 'admin', 'web']], function () {
 	Route::get('/admin', 'AdminController@index')->name('admin');

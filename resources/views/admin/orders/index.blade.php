@@ -8,7 +8,7 @@
 <div class="row">
     <div class="col-sm-12">
         @if($orders->count() <= 0)
-    <h5>Orders list is empty</h5>
+        <h5>Orders list is empty</h5>
         @else
             <div class="row my-4">
                 <div class="col-sm-4">
@@ -36,7 +36,7 @@
                         <td>{{ $order->user->name }}</td>
                         <td>{{ $order->user->email }}</td>
                         <td>{{ $order->created_at->toDateTimeString() }}</td>
-                        <td>{{ ucfirst($order->status) }}</td>
+                        <td>{{ $order->status }}</td>
                         <td>
                             <a href="{{ route('orders.show', ['id' => $order->id]) }}">Show</a> |
 

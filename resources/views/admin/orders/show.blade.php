@@ -53,7 +53,7 @@
                     <div class="form-group">Status:
                         <select name="status" class="form-control mt-2">
                             @foreach($status as $item)
-                            <option value="{{ $item }}">{{ $item }}</option>
+                            <option value="{{ $item }}" {{ $item == $order->status ? ' selected' : '' }}>{{ $item }}</option>
                             @endforeach
                         </select>
                         <div class="mt-2">

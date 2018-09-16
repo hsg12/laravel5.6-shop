@@ -37,7 +37,7 @@
                         <td>{{ $order->user->name }}</td>
                         <td>{{ $order->user->email }}</td>
                         <td>{{ $order->created_at->toDateTimeString() }}</td>
-                        <td>{{ ucfirst($order->status) }}</td>
+                        <td>{{ $order->status }}</td>
                         <td>{{ $order->deleted_at ? $order->deleted_at->toDateTimeString() : '' }}</td>
                         <td>
                             <form action="{{ route('orders.delete.permanently', ['id' => $order->id]) }}" 

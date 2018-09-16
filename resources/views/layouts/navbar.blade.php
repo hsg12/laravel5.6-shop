@@ -8,6 +8,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('show.orders') }}"><i class="fa fa-fw fa-shopping-bag"></i> Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('search') }}"><i class="fa fa-fw fa-search"></i> Search</a>
+                </li>
                 @if( (auth()->user() && auth()->user()->role === 'superadmin') || (auth()->user() && auth()->user()->role === 'admin') )
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin') }}">
@@ -16,9 +22,6 @@
                     </a>
                 </li>
                 @endif
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('search') }}"><i class="fa fa-fw fa-search"></i> Search</a>
-                </li>
             </ul>
 
             <ul class="navbar-nav ml-auto">

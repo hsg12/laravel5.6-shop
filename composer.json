@@ -30,7 +30,8 @@
         "files": [ 
             "app/Helpers/sortNestedCategories.php",
             "app/Helpers/getTitle.php",
-            "app/Helpers/getYear.php"
+            "app/Helpers/getYear.php",
+            "app/Helpers/orderCount.php"
         ]
     },
     "autoload-dev": {
