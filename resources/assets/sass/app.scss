@@ -166,7 +166,7 @@ a {
 }
 
 .category-active-color {
-    color: #d00 !important;
+    color: #1a1a1a !important;
 }
 
 .tag-strong {
@@ -217,7 +217,7 @@ button.app-counter:hover {
 
 .app-search-form {
     position: relative;
-    
+
     button {
         position: absolute;
         right: 0;
@@ -226,6 +226,13 @@ button.app-counter:hover {
         span.fa {
             font-size: 1.5em;
         }
+    }
+}
+
+@media (min-width: 992px){
+    #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
+        color: #fff!important;
+        background-color: transparent;
     }
 }
 
@@ -240,7 +247,7 @@ and (max-width: 576px) {
     }
 }
 
-@media only screen 
+@media only screen
 and (max-width: 992px) {
     ul.topnav {
         width: 100%;

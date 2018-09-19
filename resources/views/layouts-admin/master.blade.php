@@ -46,18 +46,6 @@
           </ul>
         </li>
 
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Users" id="collapse-user-li">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseUsers" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-users"></i>
-            <span class="nav-link-text">Users</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseUsers">
-            <li>
-              <a href="{{ route('users.index') }}">Users list</a>
-            </li>
-          </ul>
-        </li>
-
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Orders" id="collapse-order-li">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseOrders" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-shopping-cart"></i>
@@ -71,6 +59,20 @@
               <a href="{{ route('orders.history') }}">History</a>
             </li>
           </ul>
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="User">
+          <a class="nav-link" href="{{ route('users.index') }}">
+            <i class="fa fa-fw fa-users"></i>
+            <span class="nav-link-text">Users</span>
+          </a>
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Favicon">
+          <a class="nav-link" href="{{ route('admin.favicon') }}">
+            <i class="fa fa-fw fa-flag"></i>
+            <span class="nav-link-text">Set Favicon</span>
+          </a>
         </li>
 
       </ul>

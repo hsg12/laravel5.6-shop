@@ -2,6 +2,10 @@ $(function(){
 
 	let href = window.location.href;
 
+  /* Highlighting navbar */
+
+	$('.navbar-nav > li > a[href="'+href+'"]').parent().addClass('active');
+
 	/* To leave open admin menu when it active and for highlighting */
 
 	let linksLength = $('#exampleAccordion > li > ul > li').length;
@@ -11,8 +15,8 @@ $(function(){
 		let attrHref = accordionLink.attr('href');
 
 		if ( href.match(new RegExp('^' + attrHref)) ) {
-			accordionLink.addClass('active-color');  
-			accordionLink.parents('ul').addClass('show');  
+			accordionLink.addClass('active-color');
+			accordionLink.parents('ul').addClass('show');
 			accordionLink.parents('ul').siblings('a').removeClass('collapsed');
 			break;
 		}
@@ -53,7 +57,7 @@ $(function(){
         $('*').removeClass('footer-vertical-aligment');
 
         $('#back-to-top-container').show();
-        $('#back-to-top').click(function () {           
+        $('#back-to-top').click(function () {
             $('body,html').animate({
                 scrollTop: 0
             }, 800);
@@ -107,7 +111,7 @@ $(function(){
             success: function(data){
                 if (data) {
                     var total = data.total;
-                    
+
                     $('.total-count').text(data.count);
                     $('.total-price').text(total);
 
@@ -171,9 +175,9 @@ $(function(){
         var productPrice = productPriceContainer.data('price');
         var productCount = productCountContainer.text();
         productCount++;
-        
+
         var result = productPrice * productCount;
-        
+
         productPriceContainer.text(result.toFixed(2));
         productCountContainer.text(productCount);
 
@@ -188,7 +192,7 @@ $(function(){
     /* Minus product count */
 
     $('.minus-product').on('click', function(){
-        
+
         if (href != 'http://shop.loc/cart') {
             // For product page
             var productPriceContainer = $(this).parentsUntil('.product-data-aside').siblings('div').find('.product-price');
@@ -210,10 +214,10 @@ $(function(){
         }
 
         // For product page
-        if (href != 'http://shop.loc/cart' && productCount == 0) {        
+        if (href != 'http://shop.loc/cart' && productCount == 0) {
             productPriceContainer.text(productPrice);
             productCountContainer.text(0);
-        } 
+        }
 
         // For cart page
         if (href == 'http://shop.loc/cart') {

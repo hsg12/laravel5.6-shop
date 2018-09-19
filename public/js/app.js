@@ -36420,6 +36420,10 @@ $(function () {
 
     var href = window.location.href;
 
+    /* Highlighting navbar */
+
+    $('.navbar-nav > li > a[href="' + href + '"]').parent().addClass('active');
+
     /* To leave open admin menu when it active and for highlighting */
 
     var linksLength = $('#exampleAccordion > li > ul > li').length;

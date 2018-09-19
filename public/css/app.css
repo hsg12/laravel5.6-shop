@@ -23,7 +23,7 @@ ul.topnav {
 ul.topnav li {
 }
 ul.topnav li a {
-    color: #000;
+    color: rgba(0,0,0,0.3);
     display: block;
     font-size: 14px;
     font-weight: bolder;
@@ -33,8 +33,7 @@ ul.topnav li a {
     border-bottom: 1px solid #E5E5E5;
 }
 ul.topnav li a:hover {
-    background-color: #CCC;
-    color: white;
+    color: #1a1a1a;
 }
 ul.topnav ul {
     display: none;
@@ -53,16 +52,14 @@ ul.topnav ul li a {
     padding-left: 20px;
 }
 ul.topnav ul li a:hover {
-    background-color: #DCDCDC;
-    color: #555;
+    color: #1a1a1a;
 }
 ul.topnav ul ul li a {
     color: silver;
     padding-left: 40px;
 }
 ul.topnav ul ul li a:hover {
-    background-color: #D7D7D7;
-    color: #555555;
+    color: #1a1a1a;
 }
 ul.topnav span {
     float: right;
@@ -652,7 +649,7 @@ a:hover {
 }
 
 .category-active-color {
-  color: #d00 !important;
+  color: #1a1a1a !important;
 }
 
 .tag-strong {
@@ -714,6 +711,13 @@ button.app-counter:hover {
 
 .app-search-form button span.fa {
   font-size: 1.5em;
+}
+
+@media (min-width: 992px) {
+  #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
+    color: #fff !important;
+    background-color: transparent;
+  }
 }
 
 @media only screen and (max-width: 576px) {

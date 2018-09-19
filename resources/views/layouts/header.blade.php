@@ -11,7 +11,7 @@
     <title>Shop @yield('title', '')</title>
 
 	<!-- Favicon -->
-    <link rel="shortcut icon" href="{{{ asset('storage/favicon/favicon.ico') }}}">
+    <link rel="shortcut icon" href="{{ asset('storage/favicon/favicon.ico') }}">
     
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

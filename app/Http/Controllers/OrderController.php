@@ -15,8 +15,8 @@ class OrderController extends Controller
         if (auth()->user()) {
             $currentUserId = auth()->user()->id;
 
-            $orders = Order::where('user_id', $currentUserId)->get();
-            
+            $orders = Order::withTrashed()->where('user_id', $currentUserId)->get();
+
             foreach ($orders as $key => $order) {
                 $ordersArray = json_decode($order->products, true);
                 $ids = array_keys($ordersArray);
@@ -26,7 +26,7 @@ class OrderController extends Controller
                 $ordersData[$key]['products'] = $productsInOrder;
             }
         }
-        
+
         return view('orders.index', compact('ordersData'));
     }
 }

@@ -1,5 +1,5 @@
 @extends('layouts-admin.master')
-@section('title', "| Orders")
+@section('title', "| Admin | Orders")
 
 @section('content')
 
@@ -14,7 +14,7 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <input type="text" class="form-control" id="ordersSearch" placeholder="Search Order" autocomplete="off">
-                    </div> 
+                    </div>
                 </div>
             </div>
 
@@ -40,8 +40,8 @@
                         <td>
                             <a href="{{ route('orders.show', ['id' => $order->id]) }}">Show</a> |
 
-                            <form action="{{ route('orders.destroy', ['id' => $order->id]) }}" 
-                                  method="post" 
+                            <form action="{{ route('orders.destroy', ['id' => $order->id]) }}"
+                                  method="post"
                                   class="app-delete-form confirm-plugin-delete"
                             >
 

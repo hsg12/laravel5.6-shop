@@ -20,7 +20,7 @@ class OrderController extends Controller
     {
         $orders = Order::all();
         $cnt = 0;
-        
+
         return view('admin.orders.index', compact('orders', 'cnt'));
     }
 
@@ -109,7 +109,7 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
-        
+
         session()->flash('success', 'Order deleted!');
         return back();
     }
@@ -117,11 +117,8 @@ class OrderController extends Controller
     public function delete_permanently($id)
     {
         $order = Order::onlyTrashed()->where('id', $id)->first();
-        //$order->forceDelete();
-        $order->history()->forceDelete();
+        $order->forceDelete();
 
-
-        
         session()->flash('success', 'Order permanently deleted!');
         return back();
     }
