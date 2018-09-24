@@ -229,6 +229,32 @@ button.app-counter:hover {
     }
 }
 
+.sidebar-soc-icons {
+    position: relative;
+    margin-bottom: 40px;
+    p {
+        letter-spacing: 0.09em;
+    }
+
+    div {
+        position: absolute;
+    }
+
+    a {
+        display: inline-block;
+        margin-right: 5px;
+        position: relative;
+        top: 0;
+        bottom: 0;
+        transition: 320ms linear;
+        
+        &:hover {
+            top: -10px;
+            padding-bottom: 10px;
+        }
+    }
+}
+
 @media (min-width: 992px){
     #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
         color: #fff!important;

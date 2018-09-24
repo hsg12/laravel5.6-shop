@@ -51,7 +51,7 @@
             @endif
             
                 <div class="card">
-                    <img class="card-img-top img-fluid mt-3" src="{{ asset('storage/products/' . $product->image) }}" alt="Card image cap">
+                    <img class="card-img-top img-fluid mt-3" src="{{ asset('storage/products/' . $product->image) }}" alt="{{ $product->name }}">
                     <div class="card-body">
                         <h5 class="card-title">
                             <a href="{{ route('product', ['product' => $product->id]) }}">{{ $product->name }}</a>

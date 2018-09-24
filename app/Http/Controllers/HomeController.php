@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use Storage;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $perPage = 9;
+        $pageCountFromStore = Storage::get('public/per-page/text.txt');
+        $perPage = $pageCountFromStore ? $pageCountFromStore : 9;
+
         $products = Product::where('is_visible', 'on')->latest()->paginate($perPage);
         
         if (! $this->isPaginationPageExistsInUrl($products)) {

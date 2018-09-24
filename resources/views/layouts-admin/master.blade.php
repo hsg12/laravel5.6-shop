@@ -26,6 +26,9 @@
               <a href="{{ route('products.create') }}">Create product</a>
             </li>
             <li>
+              <a href="{{ route('products.manage.count') }}">Count per page</a>
+            </li>
+            <li>
               <a href="{{ route('products.index') }}">All products</a>
             </li>
           </ul>
@@ -72,6 +75,13 @@
           <a class="nav-link" href="{{ route('admin.favicon') }}">
             <i class="fa fa-fw fa-flag"></i>
             <span class="nav-link-text">Set Favicon</span>
+          </a>
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="SocIcons">
+          <a class="nav-link" href="{{ route('admin.soc-icons') }}">
+            <i class="fa fa-fw fa-globe"></i>
+            <span class="nav-link-text">Soc Icons</span>
           </a>
         </li>
 

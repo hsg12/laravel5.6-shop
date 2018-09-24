@@ -20,7 +20,12 @@ Route::post('/contact/message',         'ContactController@message')->name('cont
 
 Route::group(['middleware' => ['auth', 'admin', 'web']], function () {
 	Route::get('/admin', 'AdminController@index')->name('admin');
-	Route::resource('/admin/products',        'Admin\ProductController');
+
+    Route::get('/admin/products/manage/count',       'Admin\ProductController@manage_count')->name('products.manage.count');
+    Route::post('/admin/products/per-page',          'Admin\ProductController@perPage')->name('per-page');
+    Route::post('/admin/products/per-category-page', 'Admin\ProductController@perCategoryPage')->name('per-category-page');
+    Route::resource('/admin/products',              'Admin\ProductController');
+	
     Route::resource('/admin/categories',      'Admin\CategoryController');
     Route::resource('/admin/users',           'Admin\UserController');
     Route::resource('/admin/orders',          'Admin\OrderController');
@@ -28,6 +33,8 @@ Route::group(['middleware' => ['auth', 'admin', 'web']], function () {
     Route::post('/admin/favicon/store',       'Admin\FaviconController@store')->name('admin.favicon.store');
     Route::get('/admin/history',              'Admin\OrderController@history')->name('orders.history');
     Route::delete('/admin/order/delete/{id}', 'Admin\OrderController@delete_permanently')->name('orders.delete.permanently');
+    Route::get('/admin/soc-icons',            'Admin\SocIconController@index')->name('admin.soc-icons');
+    Route::post('/admin/soc-icons',           'Admin\SocIconController@store')->name('admin.soc-icons.store');;
 });
 
 Route::get('/{category}', 'CategoryController@index')->name('category');

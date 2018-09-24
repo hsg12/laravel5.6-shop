@@ -8,6 +8,7 @@ use App\Http\Requests\ProductRequest;
 use App\Product;
 use App\Category;
 use Storage;
+use File;
 
 class ProductController extends Controller
 {
@@ -18,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $perPage = 5;
+        $perPage = 1;
         $products = Product::latest()->paginate($perPage);
         $cnt = ($products->currentPage() - 1) * $perPage;
 
@@ -142,5 +143,41 @@ class ProductController extends Controller
         
         session()->flash('success', 'Product successfully deleted!');
         return redirect('admin/products');
+    }
+
+    public function manage_count() {
+        $pageCountInHome = 'Not Found';
+        $pageCountInCategory = 'Not Found';
+
+        if ( File::exists( Storage::disk('public')->path('per-page/text.txt') ) ) {
+            $pageCountInHome = Storage::get('public/per-page/text.txt');
+        }
+
+        if ( File::exists( Storage::disk('public')->path('per-category-page/text.txt') ) ) {
+            $pageCountInCategory = Storage::get('public/per-category-page/text.txt');
+        }
+
+        return view('admin.product.count', compact('pageCountInHome', 'pageCountInCategory'));
+    }
+
+    public function perPage()
+    {
+        $this->validate(request(), [
+            'per-page' => 'required|integer'
+        ]);
+        Storage::put('public/per-page/text.txt', request('per-page'));
+
+        session()->flash('success', 'Count changed!');
+        return back();
+    }
+    public function perCategoryPage()
+    {
+        $this->validate(request(), [
+            'per-category-page' => 'required|integer'
+        ]);
+        Storage::put('public/per-category-page/text.txt', request('per-category-page'));
+
+        session()->flash('success', 'Count changed!');
+        return back();
     }
 }

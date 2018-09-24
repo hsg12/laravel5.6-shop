@@ -713,6 +713,34 @@ button.app-counter:hover {
   font-size: 1.5em;
 }
 
+.sidebar-soc-icons {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.sidebar-soc-icons p {
+  letter-spacing: 0.09em;
+}
+
+.sidebar-soc-icons div {
+  position: absolute;
+}
+
+.sidebar-soc-icons a {
+  display: inline-block;
+  margin-right: 5px;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  -webkit-transition: 320ms linear;
+  transition: 320ms linear;
+}
+
+.sidebar-soc-icons a:hover {
+  top: -10px;
+  padding-bottom: 10px;
+}
+
 @media (min-width: 992px) {
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
     color: #fff !important;
