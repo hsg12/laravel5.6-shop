@@ -18,8 +18,12 @@
 
     <div class="row">
         <div class="col-md-8">
-            <img class="img-fluid" src="{{ asset('storage/products/' . $product->image) }}" alt="Card image cap">
-            <p class="mt-5">{{ $product->description }}</p>
+            <div class="text-center">
+                <div class="pimg-magnifier-container">
+                    <img id="myimage" class="img-fluid" src="{{ asset('storage/products/' . $product->image) }}" alt="Card image cap">
+                </div>
+            </div>
+            <p class="mt-5">{!! app_nl2br($product->description) !!}</p>
         </div>
         <div class="col-md-4 text-center product-data-aside">
 

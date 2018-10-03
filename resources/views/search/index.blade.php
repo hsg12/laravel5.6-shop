@@ -18,8 +18,7 @@
 
         @if(session()->has('query'))
             <p class="mt-2 mb-4">Your search results for <span class="text-danger">'{{ session()->get('query') }}'</span></p>
-            
-            @if(! session()->get('products'))
+            @if( !count(session()->get('products')) )
                 <h5 class=>Nothing found</h5>
             @else
                 <div class="table-responsive">

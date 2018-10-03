@@ -65,7 +65,7 @@
         <div class="col-sm-6">
             <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" id="description" name="description">{{ $product->description }}</textarea>
+                <textarea class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" id="description" name="description">{!! app_nl2br($product->description, true) !!}</textarea>
                 @if ($errors->has('description'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('description') }}</strong>

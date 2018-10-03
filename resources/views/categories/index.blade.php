@@ -50,21 +50,29 @@
 
             @endif
             
-                <div class="card">
-                    <img class="card-img-top img-fluid mt-3" src="{{ asset('storage/products/' . $product->image) }}" alt="{{ $product->name }}">
+                <div class="card text-center app-card">
+                    <div class="card-header">
+                        <a href="{{ route('product', ['product' => $product->id]) }}">
+                            <img class="card-img-top img-fluid" src="{{ asset('storage/products/' . $product->image) }}" alt="{{ $product->name }}">
+                        </a>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">
                             <a href="{{ route('product', ['product' => $product->id]) }}">{{ $product->name }}</a>
                         </h5>
-                        <p class="card-text">{{ str_limit($product->description, 100) }}</p>
+                        <p class="card-text text-justify">{{ str_limit($product->description, 100) }}</p>
+                        <hr>
+                        <div>Price: $<small class="tag-strong text-muted">{{ $product->price }}</small></div>
+                        <div class="overlay">
+                            <div class="text">{{ str_limit($product->description, 280) }}</div>
+                        </div>
                     </div>
                     <div class="card-footer">
-                        <div class="card-text text-center">
-                            <div class="mb-2">Price: $<small class="tag-strong text-muted">{{ $product->price }}</small></div>
+                        <div class="card-text">
                             <form class="add_to_cart">
                                 @csrf
                                 <input type="hidden" name="product-id" value="{{ $product->id }}">
-                                <button class="btn btn-sm btn-outline-info mt-3">Add To Cart Foo</button>
+                                <button class="btn btn-sm btn-outline-info">Add To Cart Foo</button>
                             </form>
                         </div>
                     </div>
@@ -82,9 +90,9 @@
 
     @endif
     
-    <ul class="app-pagination pagination justify-content-center">
+    <div class="app-pagination pagination justify-content-center">
         {{ $products->links() }}
-    </ul>
+    </div>
 
     <br>   
     <br> 

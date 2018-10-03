@@ -19,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $perPage = 1;
+        $perPage = 10;
         $products = Product::latest()->paginate($perPage);
         $cnt = ($products->currentPage() - 1) * $perPage;
 

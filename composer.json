@@ -31,7 +31,8 @@
             "app/Helpers/sortNestedCategories.php",
             "app/Helpers/getTitle.php",
             "app/Helpers/getYear.php",
-            "app/Helpers/orderCount.php"
+            "app/Helpers/orderCount.php",
+            "app/Helpers/appNl2br.php"
         ]
     },
     "autoload-dev": {

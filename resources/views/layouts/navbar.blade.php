@@ -17,6 +17,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('search') }}"><i class="fa fa-fw fa-search"></i> Search</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('portfolio') }}"><i class="fa fa-fw fa-book"></i> Portfolio</a>
+                </li>
                 @if( (auth()->user() && auth()->user()->role === 'superadmin') || (auth()->user() && auth()->user()->role === 'admin') )
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin') }}">
@@ -63,6 +66,7 @@
                                href="{{ route('logout') }}"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                             >
+                                <i class="fa fa-fw fa-sign-out" aria-hidden="true"></i>
                                 {{ __('Logout') }}
                             </a>
 

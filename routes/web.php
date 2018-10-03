@@ -4,6 +4,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('/portfolio', 'PortfolioController@index')->name('portfolio');
 Route::get('/search',                   'SearchController@index')->name('search');
 Route::post('/search/result',           'SearchController@result')->name('search.result');
 
