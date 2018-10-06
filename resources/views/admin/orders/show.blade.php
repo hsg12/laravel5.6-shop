@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="col-sm-6">
-            <div class="mb-4">
+            <div class="mb-5">
                 <h6 class="mb-3">Customer`s Data</h6>
                 <div>Customer: <strong class="tag-strong">{{ $order->user->name }}</strong></div>
                 <div>Email: <strong class="tag-strong">{{ $order->user->email }}</strong></div>
@@ -24,11 +24,11 @@
             <table>
             @foreach($products as $product)
                 <tr>
-                    <td class="w-25">
+                    <td class="pb-3">
                         <img class="img-fluid" src="{{ asset('storage/products/' . $product->image) }}" alt="Card image cap" width="200">
                     </td>
                     <td>
-                        <div>
+                        <div class="ml-4">
                             <div>Model: <strong class="tag-strong">{{ $product->name }}</strong></div>
                             <div>Price:
                                 <strong class="tag-strong">
@@ -47,22 +47,24 @@
             @endforeach
             </table>
 
-            <hr>
-            <div>
-                <form action="{{ route('orders.edit', ['id' => $order->id]) }}">
-                    <div class="form-group">Status:
-                        <select name="status" class="form-control mt-2">
-                            @foreach($status as $item)
-                            <option value="{{ $item }}" {{ $item == $order->status ? ' selected' : '' }}>{{ $item }}</option>
-                            @endforeach
-                        </select>
-                        <div class="mt-2">
-                            <button class="btn btn-outline-info btn-sm">Change</button>
-                        </div>
-                    </div>
-                </form> 
+            <hr class="mb-4">
+            
+            <form action="{{ route('orders.edit', ['id' => $order->id]) }}" class="form-inline admin-order-status-form">
+                <div>
 
-            </div>
+                    <label for="" class="">Status:</label>
+                   
+                    <select name="status" class="form-control mt-2">
+                        @foreach($status as $item)
+                        <option value="{{ $item }}" {{ $item == $order->status ? ' selected' : '' }}>{{ $item }}</option>
+                        @endforeach
+                    </select>
+                   
+                    <button class="btn btn-outline-info ">Change</button>
+                   
+                </div>
+            </form> 
+
         </div>
     </div>
 

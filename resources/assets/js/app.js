@@ -13,7 +13,9 @@ require('./jquery-filestyle.min');
 require('./j-confirm-action');
 
 // For image magnifier glass
-require('./image-magnifier-glass');
+if (window.innerWidth > 1200) {
+    require('./image-magnifier-glass');
+}
 
 /*
 window.Vue = require('vue');

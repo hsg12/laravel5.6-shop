@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card mb-5">
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">

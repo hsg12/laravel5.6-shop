@@ -13703,7 +13703,9 @@ __webpack_require__(42);
 __webpack_require__(43);
 
 // For image magnifier glass
-__webpack_require__(44);
+if (window.innerWidth > 1200) {
+    __webpack_require__(44);
+}
 
 /*
 window.Vue = require('vue');

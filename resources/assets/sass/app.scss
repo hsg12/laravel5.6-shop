@@ -1,20 +1,17 @@
-// Font Awesome
+/* Font Awesome */
 @import url('http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css');
 
-// Bootswatch Lux
+/* Bootswatch Lux */
 @import '../css/bootswatch-lux.min.css';
 
-// For categories
+/* For categories */
 @import '../css/categories-accordion.css';
 
-// For Admin Panel
+/* For Admin Panel */
 @import '../css/sb-admin.min.css';
 @import '../css/jquery-filestyle.min';
 @import '../css/j-confirm-action';
-@import "~toastr/toastr.scss"; // npm package
-
-// For image magnifier glass
-@import'../css/image-magnifier-glass.css';
+@import "~toastr/toastr.scss"; /* npm package */
 
 html {
     position: relative;
@@ -91,9 +88,9 @@ h1#navbar-brand {
     padding: 1.6em 1em !important;
 }
 
-// End for Admin Panel
+/* End for Admin Panel */
 
-// Vertical alignment for label and input
+/* Vertical alignment for label and input */
 .col-form-label {
     padding-top: calc(0.75rem + 1px);
 }
@@ -333,6 +330,47 @@ div.card-body {
     }
 }
 
+.app-user-order {
+    display: flex;
+    margin-bottom: 50px;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+        flex-basis: 48%;
+        display: inline-block;
+        object-fit: contain;
+    }
+
+    & > div {
+        flex-basis: 48%;
+    }
+}
+
+.admin-order-status-form {
+
+    div {
+        display: flex;
+        align-items: flex-end;
+
+        label {
+
+            padding-right: 10px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            margin-left: 10px;
+            line-height: 1.4;
+        }
+    }
+}
+
+.pimg-magnifier-container {
+    position: relative;
+    display: inline-block;
+}
+
 @media (min-width: 992px){
     #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
         color: #fff!important;
@@ -356,5 +394,23 @@ and (max-width: 992px) {
     ul.topnav {
         width: 100%;
         margin-bottom: 30px;
+    }
+}
+
+@media only screen
+and (min-width: 1200px) {
+    .img-magnifier-container {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .img-magnifier-glass {
+        position: absolute;
+        border: 3px solid #919aa1;
+        border-radius: 50%;
+        cursor: none;
+        /* Set the size of the magnifier glass */
+        width: 100px;
+        height: 100px;
     }
 }

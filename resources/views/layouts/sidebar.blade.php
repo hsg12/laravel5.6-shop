@@ -25,16 +25,16 @@
     <div class="col-12 sidebar-soc-icons">
         <p>We are in social networks</p>
         <div>
-            <a href="{{ $facebook }}">
+            <a href="{{ $facebook }}" target="_blank">
                 <img src="{{ asset('storage/soc-icons-images/facebook.png') }}" alt="Facebook" width="40" class="img-fluid">
             </a>
-            <a href="{{ $twitter }}">
+            <a href="{{ $twitter }}" target="_blank">
                 <img src="{{ asset('storage/soc-icons-images/twitter.png') }}" alt="Twitter" width="40" class="img-fluid">
             </a>
-            <a href="{{ $google }}">
+            <a href="{{ $google }}" target="_blank">
                 <img src="{{ asset('storage/soc-icons-images/google-plus.png') }}" alt="Google" width="40" class="img-fluid">
             </a>
-            <a href="{{ $youtube }}">
+            <a href="{{ $youtube }}" target="_blank">
                 <img src="{{ asset('storage/soc-icons-images/youtube.png') }}" alt="Youtube" width="40" class="img-fluid">
             </a>
         </div>

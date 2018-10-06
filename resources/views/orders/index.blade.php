@@ -31,7 +31,7 @@
 
                 <div class="text-center">
 
-                <h5 class="mb-4">Order{{ count($ordersData) > 1 ? 's' : '' }}</h5>
+                <h5 class="mb-5">Order{{ count($ordersData) > 1 ? 's' : '' }}</h5>
 
                 @foreach($ordersData as $key => $item)
                 <div class="mb-5">
@@ -44,10 +44,10 @@
                             
                     
                     @foreach($item['products'] as $product)
-                        <div>
-                            <div class="d-inline-block">
-                                <img class="img-fluid float-left" src="{{ asset('storage/products/' . $product->image) }}" alt="{{ $product->name }}" width="200">
-                                <div class="mb-5 d-inline-block text-left">
+                        <div class="app-user-order">
+                            
+                                <img class="img-fluid" src="{{ asset('storage/products/' . $product->image) }}" alt="{{ $product->name }}" width="200">
+                                <div class="mb-5 text-left">
                                     <div>Model: <strong class="tag-strong">{{ $product->name }}</strong></div>
                                     <div>Price:
                                         <strong class="tag-strong">
@@ -61,7 +61,7 @@
                                         </strong>
                                     </div>
                                 </div>
-                            </div>
+                            
                         </div>
                     @endforeach
                     

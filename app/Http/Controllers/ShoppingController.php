@@ -76,17 +76,13 @@ class ShoppingController extends Controller
             
             $products[$item->id] = $item->qty;
         }
-        
-
+    
         Order::create([
             'user_id' => auth()->user()->id,
             'products' => json_encode($products)
         ]);
 
-
-
-
-        /*Stripe::setApiKey("sk_test_POvKg52ipVqyiHK7AbSfpYAi");
+        Stripe::setApiKey("sk_test_POvKg52ipVqyiHK7AbSfpYAi");
 
         $charge = Charge::create([
             'amount' => Cart::total() * 100,
@@ -99,7 +95,7 @@ class ShoppingController extends Controller
 
         Cart::destroy();
 
-        Mail::to(request('userEmail'))->send(new \App\Mail\PurchaseSuccessful());*/
+        Mail::to(request('userEmail'))->send(new \App\Mail\PurchaseSuccessful());
 
         return redirect()->route('home');
     }

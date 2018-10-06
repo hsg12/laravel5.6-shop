@@ -90,23 +90,6 @@
                     </form>
                 </div>
 
-
-
-
-
-
-
-                <form action="{{ route('cart.checkout') }}" method="POST">
-                    @csrf
-
-                    <button class="btn btn-info">Foo</button>
-                </form>
-
-
-                
-
-
-
             @endif
         </div>
     </div>
