@@ -8,8 +8,8 @@
         <div class="mb-5">
             <h4 class="mt-1">Оur location</h4>
         </div>
-        <div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.99162569376!2d2.292292615757778!3d48.85837007928745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sEiffel+Tower!5e0!3m2!1sen!2sus!4v1537222075850" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <div class="our-location">
+            {!! $location !!}
         </div>
     </div>
 </div>

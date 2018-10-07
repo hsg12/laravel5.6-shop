@@ -21,7 +21,7 @@
                                     
                                     <div class="mr-auto">
                                         <h5 class="mt-3">Model: <a href="{{ route('product', ['product' => $product->id]) }}">{{ $product->name }}</a></h5>
-                                        <div>Price: {{ number_format($product->price, 2, '.', '') }}</div>
+                                        <div>Price: ${{ number_format($product->price, 2, '.', '') }}</div>
                                         
                                         <form action="{{ route('delete.from.cart', ['id' => $product->id]) }}" 
                                               method="post" 

@@ -13,6 +13,16 @@
 @import '../css/j-confirm-action';
 @import "~toastr/toastr.scss"; /* npm package */
 
+::-moz-selection {
+    color: #fff;
+    background: silver;
+}
+
+::selection {
+    color: #fff;
+    background: silver;
+}
+
 html {
     position: relative;
     min-height: 100%;
@@ -235,6 +245,20 @@ button.app-counter:hover {
         span.fa {
             font-size: 1.5em;
         }
+    }
+}
+
+#admin-soc-icons {
+    label {
+        display: flex;
+        align-items: center;
+    }
+
+    i.fa {
+        font-size: 2em;
+        margin-right: 5px;
+        background-color: #fff;
+        color: #369;
     }
 }
 

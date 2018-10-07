@@ -5,9 +5,6 @@
 
 <h4 class="mt-3 mb-1">Products count</h4>
 
-
-
-
     <div class=" @if ($errors->has('per-page') || $errors->has('per-category-page')) show @endif">
         <br>
         <div class="per-page-input">
@@ -57,7 +54,5 @@
         </div>
 
     </div>
-
-
 
 @endsection

@@ -36707,7 +36707,13 @@ $(function () {
         });
     });
 
-    /*  */
+    /* Manage location */
+
+    $('#admin-contact-location button#clean-form').on('click', function () {
+        $('#admin-contact-location input[type="text"]').val('');
+    });
+
+    $('.our-location iframe').attr('width', '100%');
 });
 
 /***/ }),

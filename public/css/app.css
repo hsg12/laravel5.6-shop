@@ -492,6 +492,16 @@ button.toast-close-button {
 
 /* npm package */
 
+::-moz-selection {
+  color: #fff;
+  background: silver;
+}
+
+::selection {
+  color: #fff;
+  background: silver;
+}
+
 html {
   position: relative;
   min-height: 100%;
@@ -734,6 +744,22 @@ button.app-counter:hover {
 
 .app-search-form button span.fa {
   font-size: 1.5em;
+}
+
+#admin-soc-icons label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#admin-soc-icons i.fa {
+  font-size: 2em;
+  margin-right: 5px;
+  background-color: #fff;
+  color: #369;
 }
 
 .sidebar-soc-icons {

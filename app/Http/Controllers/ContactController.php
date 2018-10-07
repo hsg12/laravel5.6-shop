@@ -4,12 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Mail;
+use Storage;
+use File;
 
 class ContactController extends Controller
 {
     public function index()
     {
-        return view('contact.index');
+        $location = '';
+
+        if ( File::exists( Storage::disk('public')->path('contact/location.txt') )) {
+            $location = Storage::get('public/contact/location.txt');
+        }
+
+        return view('contact.index', compact('location'));
     }
 
     public function message()

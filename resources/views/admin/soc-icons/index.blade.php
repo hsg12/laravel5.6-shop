@@ -5,14 +5,14 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <h3 class="blog-post-title mb-4">Manage Soc Icons</h3>
+        <h4 class="blog-post-title mb-4">Manage Soc Icons Links</h4>
         <hr>
         
-        <form action="{{ route('admin.soc-icons.store') }}" method="post" class="mb-3">
+        <form action="{{ route('admin.soc-icons.store') }}" method="post" class="mb-3" id="admin-soc-icons">
             @csrf
 
             <div class="form-group">
-                <label for="facebook">Facebook:</label>
+                <label for="facebook"><i class="fa fa-facebook-square" aria-hidden="true"></i> <span>Facebook:</span></label>
                 <input type="text" 
                        class="form-control{{ $errors->has('facebook') ? ' is-invalid' : '' }}" 
                        id="facebook" 
@@ -28,7 +28,7 @@
             </div>
             
             <div class="form-group">
-                <label for="twitter">Twitter:</label>
+                <label for="twitter"><i class="fa fa-twitter-square" aria-hidden="true"></i> <span>Twitter:</span></label>
                 <input type="text" 
                        class="form-control{{ $errors->has('twitter') ? ' is-invalid' : '' }}" 
                        id="twitter" 
@@ -44,7 +44,7 @@
             </div> 
 
             <div class="form-group">
-                <label for="google">Google Plus:</label>
+                <label for="google"><i class="fa fa-google-plus-square" aria-hidden="true"></i> <span>Google Plus:</span></label>
                 <input type="text" 
                        class="form-control{{ $errors->has('google') ? ' is-invalid' : '' }}" 
                        id="google" 
@@ -60,7 +60,7 @@
             </div>
 
             <div class="form-group">
-                <label for="youtube">YouTube:</label>
+                <label for="youtube"><i class="fa fa-youtube-square" aria-hidden="true"></i> <span>YouTube:</span></label>
                 <input type="text" 
                        class="form-control{{ $errors->has('youtube') ? ' is-invalid' : '' }}" 
                        id="youtube" 

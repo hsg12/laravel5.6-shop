@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 
-        <li class="nav-item mt-4" data-toggle="tooltip" data-placement="right" title="Dashboard">
+        <li class="nav-item mt-4 mb-3" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link" href="{{ route('admin') }}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
@@ -23,7 +23,7 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseProducts">
             <li>
-              <a href="{{ route('products.create') }}">Create product</a>
+              <a href="{{ route('products.create') }}">Add product</a>
             </li>
             <li>
               <a href="{{ route('products.manage.count') }}">Count per page</a>
@@ -82,6 +82,13 @@
           <a class="nav-link" href="{{ route('admin.soc-icons') }}">
             <i class="fa fa-fw fa-globe"></i>
             <span class="nav-link-text">Soc Icons</span>
+          </a>
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Contact">
+          <a class="nav-link" href="{{ route('admin.contact') }}">
+            <i class="fa fa-fw fa-map-marker"></i>
+            <span class="nav-link-text">Contact Us</span>
           </a>
         </li>
 

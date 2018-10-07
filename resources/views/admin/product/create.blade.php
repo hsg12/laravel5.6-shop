@@ -1,9 +1,9 @@
 @extends('layouts-admin.master')
-@section('title', "| Create product")
+@section('title', "| Add product")
 
 @section('content')
 
-<h4 class="mt-3 mb-4">Create Product</h4>
+<h4 class="mt-3 mb-4">Add Product</h4>
 
 <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data" class="mb-5">
     @csrf
@@ -101,7 +101,7 @@
         </div>
     </div>
 
-    <button class="btn btn-outline-secondary mt-3">Create</button>
+    <button class="btn btn-outline-secondary mt-3">Add</button>
 </form>
 
 @endsection
