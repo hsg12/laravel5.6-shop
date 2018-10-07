@@ -5,7 +5,7 @@
 
 <div class="blog-post">
     <h4 class="mt-3 mb-4">Set favicon</h4>
-    <p>Only .ico extension is allowed</p>
+    <p class="text-danger">Only .ico extension is allowed</p>
 
     <form action="{{ route('admin.favicon.store') }}" method="post" class="mb-3" enctype="multipart/form-data">
         @csrf
