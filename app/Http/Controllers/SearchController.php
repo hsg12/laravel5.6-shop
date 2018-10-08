@@ -19,7 +19,14 @@ class SearchController extends Controller
 
         if (! empty($query)) {
             $search = "%" . $query . "%";
-            $products = Product::where('name', 'like', $search)->orWhere('price', 'like', $search)->get();
+
+            /* This code will search from two tables (products and categories) */
+            $products = Product::where('name', 'like', $search)
+                ->orWhere('price', 'like', $search)
+                ->orWhereHas('category', function ($query) use ($search) {
+                    $query->where('name', 'like', '%'.$search.'%');
+                })
+               ->get();
         }
 
         return back()->with(compact('products', 'query'));

@@ -6,10 +6,10 @@
 <div class="row">
     <div class="col-sm-12">
         @if(! auth()->user())
-            <h5>You should be logged in to see your orders</h5>
+            <h4 class="mt-1">You should be logged in to see your orders</h4>
         @else
             @if(! $ordersData)
-                <h5>You have no any orders</h5>
+                <h4 class="mt-1">You have no any orders</h4>
             @else
                 @if(auth()->user())
                 <div class="mb-5" style="font-size: 16px;">
