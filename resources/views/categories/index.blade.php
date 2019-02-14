@@ -72,7 +72,7 @@
                             <form class="add_to_cart">
                                 @csrf
                                 <input type="hidden" name="product-id" value="{{ $product->id }}">
-                                <button class="btn btn-sm btn-outline-info">Add To Cart Foo</button>
+                                <button class="btn btn-sm btn-outline-info">Add To Cart</button>
                             </form>
                         </div>
                     </div>
