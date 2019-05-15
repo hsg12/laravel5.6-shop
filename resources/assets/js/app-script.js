@@ -1,6 +1,7 @@
 $(function(){
 
 	let href = window.location.href;
+    var protocolHostname = window.location.protocol + '//' + window.location.hostname;
 
     /* Highlighting navbar */
 
@@ -124,7 +125,7 @@ $(function(){
 
     /* Stripe Configuration block */
 
-    if (href == 'http://shop.loc/cart') {
+    if (href == protocolHostname + '/cart') {
         var handler = StripeCheckout.configure({
           key: 'pk_test_HFPy0sQnqO1mVmknoxo0iNmt',
           image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
@@ -162,7 +163,7 @@ $(function(){
 
     $('.plus-product').on('click', function(){
 
-        if (href != 'http://shop.loc/cart') {
+        if (href != protocolHostname + '/cart') {
             // For product page
             var productPriceContainer = $(this).parentsUntil('.product-data-aside').siblings('div').find('.product-price');
         } else {
@@ -182,7 +183,7 @@ $(function(){
         productCountContainer.text(productCount);
 
         // For cart page
-        if (href == 'http://shop.loc/cart') {
+        if (href == protocolHostname + '/cart') {
             var rowId = $(this).siblings('span').data('productrowid');
             UpdateCart (rowId, productCount);
         }
@@ -193,7 +194,7 @@ $(function(){
 
     $('.minus-product').on('click', function(){
 
-        if (href != 'http://shop.loc/cart') {
+        if (href != protocolHostname + '/cart') {
             // For product page
             var productPriceContainer = $(this).parentsUntil('.product-data-aside').siblings('div').find('.product-price');
         } else {
@@ -214,13 +215,13 @@ $(function(){
         }
 
         // For product page
-        if (href != 'http://shop.loc/cart' && productCount == 0) {
+        if (href != protocolHostname + '/cart' && productCount == 0) {
             productPriceContainer.text(productPrice);
             productCountContainer.text(0);
         }
 
         // For cart page
-        if (href == 'http://shop.loc/cart') {
+        if (href == protocolHostname + '/cart') {
             var rowId = $(this).siblings('span').data('productrowid');
             UpdateCart (rowId, productCount);
         }
