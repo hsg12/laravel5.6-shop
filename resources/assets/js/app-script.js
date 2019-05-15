@@ -1,6 +1,6 @@
 $(function(){
 
-	let href = window.location.href;
+    let href = window.location.href;
     var protocolHostname = window.location.protocol + '//' + window.location.hostname;
 
     /* Highlighting navbar */
